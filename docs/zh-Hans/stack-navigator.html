@@ -419,7 +419,7 @@ headerBackground: () =&gt; (
   Style object for the card in stack. You can provide a custom background color to use instead of the default background here.
 </p>
 <p spaces-before="0">
-  You can also specify <code>{ backgroundColor: 'transparent' }</code> to make the previous screen visible underneath. This is useful to implement things like modal dialogs. You should also specify <code>mode: 'modal'</code> in the stack view config when using a transparent background so previous screens aren't detached and stay visible underneath.
+  You can also specify <code>{ backgroundColor: 'transparent' }</code> to make the previous screen visible underneath (for transparent modals). This is useful to implement things like modal dialogs. You should also specify <code>mode: 'modal'</code> in the stack view config when using a transparent background so previous screens aren't detached and stay visible underneath.
 </p>
 <p><h4 spaces-before="0">
 <code>animationEnabled</code>
@@ -1075,6 +1075,62 @@ headerMode=&quot;none&quot;
 &lt;Stack.Screen name=&quot;Profile&quot; component={Profile} /&gt;
 &lt;/Stack.Navigator&gt;;
 </code></pre></p>
+<p><h3 spaces-before="0">
+Transparent modals
+</h3></p>
+<p spaces-before="0">
+  A transparent modal is like a modal dialog which overlays the screen. The previous screen still stays visible underneath. To get a transparent modal screen, it's usually easier to create a separate modal stack. In the modal stack, you will want to configure few things:
+</p>
+<ul>
+  <li>
+    Set the <code>mode</code> prop to <code>modal</code>
+  </li>
+  <li>
+    Set the card background to transparent using <code>cardStyle</code>
+  </li>
+  <li>
+    Use a fade animation instead of the default animation
+  </li>
+  <li>
+    Disable the header with <code>headerMode="none"</code> (optional)
+  </li>
+  <li>
+    Enable the overlay with <code>cardOverlayEnabled: true</code> (optional)
+  </li>
+</ul>
+<p spaces-before="0">
+  例子:
+</p>
+<pre><code class="js">&lt;Stack.Navigator
+  screenOptions={{
+    cardStyle: { backgroundColor: 'transparent' },
+    cardOverlayEnabled: true,
+    cardStyleInterpolator: ({ current: { progress } }) =&gt; ({
+      cardStyle: {
+        opacity: progress.interpolate({
+          inputRange: [0, 0.5, 0.9, 1],
+          outputRange: [0, 0.25, 0.7, 1],
+        }),
+      },
+      overlayStyle: {
+        opacity: progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 0.5],
+          extrapolate: 'clamp',
+        }),
+      },
+    }),
+  }}
+  mode="modal"
+  headerMode="none"
+&gt;
+  &lt;Stack.Screen name="Home" component={HomeStack} /&gt;
+  &lt;Stack.Screen name="Modal" component={ModalScreen} /&gt;
+&lt;/Stack.Navigator&gt;
+</code></pre>
+<p spaces-before="0">
+  Now, when you navigate to the <code>Modal</code> screen, the <code>Home</code> screen will still be visible underneath.
+</p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/navigation-context.html"><span class="arrow-prev">← </span><span>上一篇</span></a><a class="docs-next button" href="/docs/zh-Hans/native-stack-navigator.html"><span>下一篇</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-定义">API 定义</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {

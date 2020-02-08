@@ -1105,7 +1105,7 @@ Transparent modals
   screenOptions={{
     cardStyle: { backgroundColor: 'transparent' },
     cardOverlayEnabled: true,
-    cardStyleInterpolator: ({ current: { progress } }) =&gt; {
+    cardStyleInterpolator: ({ current: { progress } }) =&gt; ({
       cardStyle: {
         opacity: progress.interpolate({
           inputRange: [0, 0.5, 0.9, 1],
