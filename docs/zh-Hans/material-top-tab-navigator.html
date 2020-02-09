@@ -76,52 +76,9 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/material-top-tab-navigator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">createMaterialTopTabNavigator</h1></header><article><div><span><p>屏幕顶部的材料设计主题标签栏, 可通过点击路线或水平滑动来切换不同的路由。 默认情况下, 转换是动态的。 每个路由的屏幕组件将立即安装。</p>
 <p>This wraps <a href="https://github.com/react-native-community/react-native-tab-view"><code>react-native-tab-view</code></a>.</p>
-<p>To use this navigator, ensure that you have <a href="getting-started.html">react-navigation and its dependencies installed</a>, then install <a href="https://github.com/react-navigation/react-navigation/tree/master/packages/material-top-tabs"><code>@react-navigation/material-top-tabs</code></a>:</p>
+<p>To use this navigator, ensure that you have <a href="getting-started.html"><code>@react-navigation/native</code> and its dependencies (follow this guide)</a>, then install <a href="https://github.com/react-navigation/react-navigation/tree/master/packages/material-top-tabs"><code>@react-navigation/material-top-tabs</code></a>:</p>
 <pre><code class="hljs css language-sh">npm install @react-navigation/material-top-tabs react-native-tab-view
 </code></pre>
-<p>Now we need to install <a href="https://github.com/software-mansion/react-native-gesture-handler"><code>react-native-gesture-handler</code></a> and <a href="https://github.com/software-mansion/react-native-reanimated"><code>react-native-reanimated</code></a>.</p>
-<p>如果使用的是Expo，请确保运行兼容版本的库，请运行：</p>
-<pre><code class="hljs css language-sh">expo install react-native-gesture-handler react-native-reanimated
-</code></pre>
-<p>如果您没有使用Expo，请运行以下命令：</p>
-<pre><code class="hljs css language-sh">npm install react-native-reanimated react-native-gesture-handler
-</code></pre>
-<p>如果您正在使用Expo，则已完成。 否则，请继续以下步骤。</p>
-<p>为了在 iOS 上完成自动链接, 请确保你已经安装了<a href="https://cocoapods.org/">Cocoapods</a> Then run:</p>
-<pre><code class="hljs css language-sh"><span class="hljs-built_in">cd</span> ios
-pod install
-<span class="hljs-built_in">cd</span> ..
-</code></pre>
-<p>To finalize installation of <code>react-native-gesture-handler</code> for Android, be sure to make the necessary modifications to <code>MainActivity.java</code>:</p>
-<pre><code class="hljs css language-diff">package com.reactnavigation.example;
-
-import com.facebook.react.ReactActivity;
-<span class="hljs-addition">+ import com.facebook.react.ReactActivityDelegate;</span>
-<span class="hljs-addition">+ import com.facebook.react.ReactRootView;</span>
-<span class="hljs-addition">+ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;</span>
-
-public class MainActivity extends ReactActivity {
-
-  @Override
-  protected String getMainComponentName() {
-    return "Example";
-  }
-
-<span class="hljs-addition">+  @Override</span>
-<span class="hljs-addition">+  protected ReactActivityDelegate createReactActivityDelegate() {</span>
-<span class="hljs-addition">+    return new ReactActivityDelegate(this, getMainComponentName()) {</span>
-<span class="hljs-addition">+      @Override</span>
-<span class="hljs-addition">+      protected ReactRootView createRootView() {</span>
-<span class="hljs-addition">+       return new RNGestureHandlerEnabledRootView(MainActivity.this);</span>
-<span class="hljs-addition">+      }</span>
-<span class="hljs-addition">+    };</span>
-<span class="hljs-addition">+  }</span>
-}
-</code></pre>
-<p>Then add the following at the top of your entry file, such as <code>index.js</code> or <code>App.js</code>:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token string">'react-native-gesture-handler'</span><span class="token punctuation">;</span>
-</code></pre>
-<p>Finally, run <code>react-native run-android</code> or <code>react-native run-ios</code> to launch the app on your device/simulator.</p>
 <h2><a class="anchor" aria-hidden="true" id="api-定义"></a><a href="#api-定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API 定义</h2>
 <p>To use this tab navigator, import it from <code>@react-navigation/material-top-tabs</code>:</p>
 <p><samp id="material-top-tab-based-navigation-minimal" /></p>
