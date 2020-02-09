@@ -105,47 +105,6 @@ user: 'jane',
 );
 </code></pre></p>
 <p><h3 spaces-before="0">
-replace
-</h3></p>
-<p spaces-before="0">
-  The <code>replace</code> action allows to replace a route in the navigation state. It takes the following arguments:
-</p>
-<ul>
-  <li>
-    <code>name</code> - <em x-id="4">string</em> - A destination name of the route that has been registered somewhere.
-  </li>
-  <li>
-    <code>params</code> - <em x-id="4">object</em> - Params to merge into the destination route.
-  </li>
-</ul>
-<p spaces-before="0">
-  <samp id="common-actions"></p> 
-  <pre><code class="js">import { CommonActions } from '@react-navigation/native';
-<p>navigation.dispatch(
-CommonActions.replace('Profile', {
-user: 'jane',
-})
-);
-</code></pre></p>
-  <p spaces-before="0">
-    If you want to replace a particular route, you can add a <code>source</code> property referring to the route key:
-  </p>
-  <p spaces-before="0">
-    <samp id="common-actions"></p> 
-<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { CommonActions } from '@react-navigation/native';
-</code></pre>
-<p>navigation.dispatch({
-...CommonActions.replace('Profile', {
-user: 'jane',
-}),
-source: route.key,
-});
-</code></pre></p>
-<pre><code class="hljs">&lt;p spaces-before=&quot;0&quot;&gt;
-  If the &lt;code&gt;source&lt;/code&gt; property is explicitly set to &lt;code&gt;undefined&lt;/code&gt;, it'll replace the focused route.
-&lt;/p&gt;
-</code></pre>
-<p><h3 spaces-before="0">
 reset
 </h3></p>
 <p spaces-before="0">
