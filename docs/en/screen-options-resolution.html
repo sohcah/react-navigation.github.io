@@ -175,9 +175,9 @@
   <span class="token keyword">const</span> routeName <span class="token operator">=</span> route<span class="token punctuation">.</span>state
     <span class="token operator">?</span> <span class="token comment">// Get the currently active route name in the tab navigator</span>
       route<span class="token punctuation">.</span>state<span class="token punctuation">.</span>routes<span class="token punctuation">[</span>route<span class="token punctuation">.</span>state<span class="token punctuation">.</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>name
-    <span class="token operator">:</span> <span class="token comment">// If state doesn't exist, we need to default to the initial screen</span>
+    <span class="token operator">:</span> <span class="token comment">// If state doesn't exist, we need to default to `screen` param if available, or the initial screen</span>
       <span class="token comment">// In our case, it's "Feed" as that's the first screen inside the navigator</span>
-      <span class="token string">'Feed'</span><span class="token punctuation">;</span>
+      route<span class="token punctuation">.</span>params<span class="token operator">?.</span>screen <span class="token operator">||</span> <span class="token string">'Feed'</span><span class="token punctuation">;</span>
 
   <span class="token keyword">switch</span> <span class="token punctuation">(</span>routeName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">case</span> <span class="token string">'Feed'</span><span class="token operator">:</span>
