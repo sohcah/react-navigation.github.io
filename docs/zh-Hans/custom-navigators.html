@@ -113,8 +113,11 @@
 </ul>
 <p>例子:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> useNavigationBuilder <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> TabRouter<span class="token punctuation">,</span> TabActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/routers'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  useNavigationBuilder<span class="token punctuation">,</span>
+  TabRouter<span class="token punctuation">,</span>
+  TabActions<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">function</span> <span class="token function">TabNavigator</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>
   initialRouteName<span class="token punctuation">,</span>
@@ -195,13 +198,11 @@ import { StyleProp, ViewStyle } <span class="hljs-keyword">from</span> 'react-na
 import {
   useNavigationBuilder,
   DefaultNavigatorOptions,
-} <span class="hljs-keyword">from</span> '@react-navigation/native';
-import {
   TabRouter,
   TabActions,
   TabRouterOptions,
   TabNavigationState,
-} <span class="hljs-keyword">from</span> '@react-navigation/routers';
+} <span class="hljs-keyword">from</span> '@react-navigation/native';
 
 // Props accepted by the view
 type TabNavigationConfig = {
@@ -288,8 +289,8 @@ export <span class="hljs-keyword">default</span> createNavigatorFactory<span cla
 <span class="token keyword">import</span> <span class="token punctuation">{</span>
   useNavigationBuilder<span class="token punctuation">,</span>
   createNavigatorFactory<span class="token punctuation">,</span>
+  TabRouter<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> TabRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/routers'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> BottomTabView <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/bottom-tabs'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">function</span> <span class="token function">BottomTabNavigator</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>

@@ -200,7 +200,7 @@ const SimpleRouter = () => router;
 export default SimpleRouter;
 </span></code></pre>
 <h2><a class="anchor" aria-hidden="true" id="内置的路由"></a><a href="#内置的路由" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>内置的路由</h2>
-<p>The <code>@react-navigation/routers</code> package ships with a few standard routers:</p>
+<p>The library ships with a few standard routers:</p>
 <ul>
 <li><code>StackRouter</code></li>
 <li><code>TabRouter</code></li>
@@ -211,7 +211,7 @@ export default SimpleRouter;
 <p>See <a href="custom-navigators.html">custom navigators</a> for details on how to override the router with a custom router in an existing navigator.</p>
 <h3><a class="anchor" aria-hidden="true" id="自定义导航操作"></a><a href="#自定义导航操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>自定义导航操作</h3>
 <p>Let's say you want to add a custom action to clear the history:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> TabRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/routers'</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> TabRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">MyTabRouter</span> <span class="token operator">=</span> <span class="token parameter">options</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">TabRouter</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -241,7 +241,7 @@ export default SimpleRouter;
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="阻止导航操作"></a><a href="#阻止导航操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>阻止导航操作</h3>
 <p>有时你可能想要阻止某些导航活动，具体取决于您的路由。 Let's say, you want to prevent going back if <code>isEditing</code> is <code>true</code>:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> StackRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/routers'</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> StackRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">MyStackRouter</span> <span class="token operator">=</span> <span class="token parameter">options</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">StackRouter</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
