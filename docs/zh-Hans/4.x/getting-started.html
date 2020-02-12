@@ -110,22 +110,18 @@
 <ul>
 <li><p><strong>React Native 0.60 及更高版本</strong></p>
 <p>在新版本的 React Native 中 <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">链接是自动的</a>(我们不再需要手动的 link 一个 库).</p>
-<p>为了在 iOS 上完成自动链接, 请确保你已经安装了<a href="https://cocoapods.org/">Cocoapods</a> 然后运行命令:</p></li>
+<p>If you're on a Mac and developing for iOS, you need to install pods to complete the linking. Make sure you have <a href="https://cocoapods.org/">Cocoapods</a> installed. Then run:</p></li>
 </ul>
-<pre><code class="hljs css language-sh">  <span class="hljs-built_in">cd</span> ios
-  pod install
-  <span class="hljs-built_in">cd</span> ..
+<pre><code class="hljs css language-sh">  <span class="hljs-built_in">cd</span> ios; pod install; <span class="hljs-built_in">cd</span> ..
 </code></pre>
-<blockquote>
-<p>Note: This step is for iOS development on Mac. If you're not using a Mac, then skip this step.</p>
-</blockquote>
-<p>To finalize installation of <code>react-native-screens</code> for Android, add the following two lines to <code>dependencies</code> section in <code>android/app/build.gradle</code>:</p>
+<p>为了完成 <code>react-native-screens</code> 在 Android 上的安装, 请在<code>android/app/build.gradle</code> 中 <code>dependencies</code> 选项中添加下面这两行:</p>
 <pre><code class="hljs css language-gradle">implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0-rc01'</span>
 implementation <span class="hljs-string">'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'</span>
 </code></pre>
 <ul>
-<li><p><strong>React Native 0.59 and lower</strong></p>
-<p>If you're on an older React Native version, you need to manually link the dependencies. To do that, run:</p>
+<li><strong>React Native 0.59 及更低版本</strong></li>
+</ul>
+<p>如果你在使用更老版本的 React Native, 你需要手动链接依赖 To do that, run:</p>
 <pre><code class="hljs css language-sh">react-native link react-native-reanimated
 react-native link react-native-gesture-handler
 react-native link react-native-screens
@@ -144,8 +140,7 @@ react-native link react-native-safe-area-context
 </blockquote>
 <p>Now, run the <code>postinstall</code> script manually:</p>
 <pre><code class="hljs css language-sh">npm run postinstall
-</code></pre></li>
-</ul>
+</code></pre>
 <p>To finalize installation of <code>react-native-gesture-handler</code> for Android, make the following modifications to <code>MainActivity.java</code>:</p>
 <pre><code class="hljs css language-diff">package com.reactnavigation.example;
 

@@ -82,13 +82,13 @@
 </code></pre>
 <p>React Navigation is made up of some core utilities and those are then used by navigators to create the navigation structure in your app. Don't worry too much about this for now, it'll become clear soon enough! To frontload the installation work, let's also install and configure dependencies used by most navigators, then we can move forward with starting to write some code.</p>
 <p>The libraries we will install now are <a href="https://github.com/software-mansion/react-native-gesture-handler"><code>react-native-gesture-handler</code></a>, <a href="https://github.com/software-mansion/react-native-reanimated"><code>react-native-reanimated</code></a>, <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a> and <a href="https://github.com/th3rdwave/react-native-safe-area-context"><code>react-native-safe-area-context</code></a>. If you already have these libraries installed and at the latest version, you are done here! Otherwise, read on.</p>
-<h4><a class="anchor" aria-hidden="true" id="installing-dependencies-into-an-expo-managed-project"></a><a href="#installing-dependencies-into-an-expo-managed-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing dependencies into an Expo managed project</h4>
+<h3><a class="anchor" aria-hidden="true" id="installing-dependencies-into-an-expo-managed-project"></a><a href="#installing-dependencies-into-an-expo-managed-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing dependencies into an Expo managed project</h3>
 <p>In your project directory, run:</p>
 <pre><code class="hljs css language-sh">expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 </code></pre>
 <p>This will install versions of these libraries that are compatible.</p>
 <p>You can now continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
-<h4><a class="anchor" aria-hidden="true" id="installing-dependencies-into-a-bare-react-native-project"></a><a href="#installing-dependencies-into-a-bare-react-native-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing dependencies into a bare React Native project</h4>
+<h3><a class="anchor" aria-hidden="true" id="installing-dependencies-into-a-bare-react-native-project"></a><a href="#installing-dependencies-into-a-bare-react-native-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing dependencies into a bare React Native project</h3>
 <p>In your project directory, run:</p>
 <pre><code class="hljs css language-sh">npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
 </code></pre>
@@ -96,47 +96,15 @@
 <p>Note: You might get warnings related to peer dependencies after installation. They are usually caused by incorrect version ranges specified in some packages. You can safely ignore most warnings as long as your app builds.</p>
 </blockquote>
 <p>From React Native 0.60 and higher, <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">linking is automatic</a>. So you <strong>don't need to run</strong> <code>react-native link</code>.</p>
-<p>To complete the linking on iOS, make sure you have <a href="https://cocoapods.org/">Cocoapods</a> installed. Then run:</p>
-<pre><code class="hljs css language-sh"><span class="hljs-built_in">cd</span> ios
-pod install
-<span class="hljs-built_in">cd</span> ..
+<p>If you're on a Mac and developing for iOS, you need to install pods to complete the linking. Make sure you have <a href="https://cocoapods.org/">Cocoapods</a> installed. Then run:</p>
+<pre><code class="hljs css language-sh"><span class="hljs-built_in">cd</span> ios; pod install; <span class="hljs-built_in">cd</span> ..
 </code></pre>
-<blockquote>
-<p>Note: This step is for iOS development on Mac. If you're not using a Mac, then skip this step.</p>
-</blockquote>
-<p>To finalize installation of <code>react-native-screens</code> for Android, add the following two lines to <code>dependencies</code> section in <code>android/app/build.gradle</code>:</p>
-<pre><code class="hljs css language-gradle">implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0-rc01'</span>
-implementation <span class="hljs-string">'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'</span>
-</code></pre>
-<p>To finalize installation of <code>react-native-gesture-handler</code> for Android, make the following modifications to <code>MainActivity.java</code>:</p>
-<pre><code class="hljs css language-diff">package com.reactnavigation.example;
-
-import com.facebook.react.ReactActivity;
-<span class="hljs-addition">+ import com.facebook.react.ReactActivityDelegate;</span>
-<span class="hljs-addition">+ import com.facebook.react.ReactRootView;</span>
-<span class="hljs-addition">+ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;</span>
-
-public class MainActivity extends ReactActivity {
-
-  @Override
-  protected String getMainComponentName() {
-    return "Example";
-  }
-
-<span class="hljs-addition">+  @Override</span>
-<span class="hljs-addition">+  protected ReactActivityDelegate createReactActivityDelegate() {</span>
-<span class="hljs-addition">+    return new ReactActivityDelegate(this, getMainComponentName()) {</span>
-<span class="hljs-addition">+      @Override</span>
-<span class="hljs-addition">+      protected ReactRootView createRootView() {</span>
-<span class="hljs-addition">+        return new RNGestureHandlerEnabledRootView(MainActivity.this);</span>
-<span class="hljs-addition">+      }</span>
-<span class="hljs-addition">+    };</span>
-<span class="hljs-addition">+  }</span>
-}
-</code></pre>
-<p>Then add the following at the <strong>top</strong> (make sure it's at the top and there's nothing else before it) of your entry file, such as <code>index.js</code> or <code>App.js</code>:</p>
+<p>To finalize installation of <code>react-native-gesture-handler</code>, add the following at the <strong>top</strong> (make sure it's at the top and there's nothing else before it) of your entry file, such as <code>index.js</code> or <code>App.js</code>:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token string">'react-native-gesture-handler'</span><span class="token punctuation">;</span>
 </code></pre>
+<blockquote>
+<p>Note: If you skip this step, your app may crash in production even if it works fine in development.</p>
+</blockquote>
 <p>Now, we need to wrap the whole app in <code>NavigationContainer</code>. Usually you'd do this in your entry file, such as <code>index.js</code> or <code>App.js</code>:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationContainer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
@@ -154,7 +122,7 @@ public class MainActivity extends ReactActivity {
 </blockquote>
 <p>Now you are ready to build and run your app on the device/simulator.</p>
 <p>Continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/pt-BR/hello-react-navigation.html"><span>Próximo</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#instalação">Instalação</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/pt-BR/hello-react-navigation.html"><span>Próximo</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#instalação">Instalação</a><ul class="toc-headings"><li><a href="#installing-dependencies-into-an-expo-managed-project">Installing dependencies into an Expo managed project</a></li><li><a href="#installing-dependencies-into-a-bare-react-native-project">Installing dependencies into a bare React Native project</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
