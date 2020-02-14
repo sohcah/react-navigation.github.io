@@ -113,8 +113,17 @@
   <span class="token keyword">const</span> <span class="token punctuation">[</span>initialState<span class="token punctuation">,</span> setInitialState<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   React<span class="token punctuation">.</span><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token function">getInitialState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span>
+      <span class="token function">getInitialState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=></span>
+        <span class="token comment">// Timeout in 150ms if `getInitialState` doesn't resolve</span>
+        <span class="token comment">// Workaround for https://github.com/facebook/react-native/issues/25675</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">)</span>
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">state</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
           <span class="token function">setInitialState</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -135,6 +144,9 @@
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<blockquote>
+<p>Note: The <code>getInitialState</code> function uses React Native's <code>Linking.getInitialUrl()</code> under the hood. Currently there seems to be bug (<a href="https://github.com/facebook/react-native/issues/25675">facebook/react-native#25675</a>) which results in it never resolving on Android.</p>
+</blockquote>
 <p>Often, directly translating path segments to route names may not be the expected behavior. For example, you might want to parse the path <code>/feed/latest</code> to something like:</p>
 <pre><code class="hljs css language-js"><span class="token punctuation">{</span>
   routes<span class="token operator">:</span> <span class="token punctuation">[</span>

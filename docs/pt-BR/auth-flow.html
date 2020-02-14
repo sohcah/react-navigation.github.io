@@ -198,13 +198,15 @@
 </ul>
 <p>So our navigator will look like:</p>
 <p><samp id="auth-flow" /></p>
-<pre><code class="hljs css language-js"><span class="token keyword">return</span> <span class="token punctuation">(</span>
+<pre><code class="hljs css language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>isLoading<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// We haven't finished checking for the token yet</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SplashScreen</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AuthContext.Provider</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>authContext<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token punctuation">{</span>state<span class="token punctuation">.</span>isLoading <span class="token operator">?</span> <span class="token punctuation">(</span>
-        <span class="token comment">// We haven't finished checking for the token yet</span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Splash<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>SplashScreen<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-      <span class="token punctuation">)</span> <span class="token operator">:</span> state<span class="token punctuation">.</span>userToken <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token punctuation">(</span>
+      </span><span class="token punctuation">{</span>state<span class="token punctuation">.</span>userToken <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token punctuation">(</span>
         <span class="token comment">// No token found, user isn't signed in</span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
           <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>SignIn<span class="token punctuation">"</span></span>
@@ -212,6 +214,7 @@
           <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
             title<span class="token operator">:</span> <span class="token string">'Sign in'</span><span class="token punctuation">,</span>
             <span class="token comment">// When logging out, a pop animation feels intuitive</span>
+            <span class="token comment">// You can remove this if you want the default 'push' animation</span>
             animationTypeForReplace<span class="token operator">:</span> state<span class="token punctuation">.</span>isSignout <span class="token operator">?</span> <span class="token string">'pop'</span> <span class="token operator">:</span> <span class="token string">'push'</span><span class="token punctuation">,</span>
           <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
         <span class="token punctuation">/></span></span>
@@ -225,7 +228,6 @@
 </code></pre>
 <p>In the above code snippet, we're conditionally defining screens:</p>
 <ul>
-<li><code>Splash</code> screen is only defined if <code>isLoading</code> is <code>true</code></li>
 <li><code>SignIn</code> screen is only defined if <code>userToken</code> is <code>null</code></li>
 <li><code>Home</code> screen is only defined if <code>userToken</code> is non-null</li>
 </ul>
