@@ -197,7 +197,10 @@ previous ? &lt;MyBackButton onPress={navigation.goBack} /&gt; : undefined
 };
 </code></pre></p>
 <p spaces-before="0">
-  By default, there is one floating header which renders headers for multiple screens on iOS. These headers include animations to smoothly switch to one another. When using a custom header, it's recommended set the <code>headerMode</code> prop on the navigator to <code>screen</code> so that you don't have to implement animations.
+  By default, there is one floating header which renders headers for multiple screens on iOS. These headers include animations to smoothly switch to one another.
+</p>
+<p spaces-before="0">
+  When using a custom header, it's recommended set the <code>headerMode</code> prop on the navigator to <code>screen</code> so that you don't have to implement animations.
 </p>
 <p spaces-before="0">
   You should also specify a height in <code>headerStyle</code> to avoid glitches:
@@ -209,6 +212,18 @@ previous ? &lt;MyBackButton onPress={navigation.goBack} /&gt; : undefined
 <p spaces-before="0">
   To set a custom header for all the screens in the navigator, you can specify this option in the <code>screenOptions</code> prop of the navigator.
 </p>
+<p spaces-before="0">
+  If you want your custom header to animate with screen transitions and want to keep <code>headerMode</code> as <code>float</code>, you can interpolate on the <code>scene.progress.current</code> and <code>scene.progress.next</code> props. For example, following will cross-fade the header:
+</p>
+<pre><code class="js">const progress = Animated.add(scene.progress.current, scene.progress.next || 0);
+<p>const opacity = progress.interpolate({
+inputRange: [0, 1, 2],
+outputRange: [0, 1, 0],
+});</p>
+<p>return (
+&lt;Animated.View style={{ opacity }}&gt;{/* Header content */}&lt;/Animated.View&gt;
+);
+</code></pre></p>
 <p><h4 spaces-before="0">
 <code>headerShown</code>
 </h4></p>
@@ -1075,6 +1090,11 @@ headerMode=&quot;none&quot;
 &lt;Stack.Screen name=&quot;Profile&quot; component={Profile} /&gt;
 &lt;/Stack.Navigator&gt;;
 </code></pre></p>
+<blockquote spaces-before="0">
+  <p spaces-before="0">
+    Note: The <code>ModalPresentationIOS</code> preset needs to be configured for the whole stack for it to work correctly. If you want few screens to have this transition, you can add a modal stack at root with this transition, and nest a regular stack inside it.
+  </p>
+</blockquote>
 <p><h3 spaces-before="0">
 Transparent modals
 </h3></p>
@@ -1089,7 +1109,7 @@ Transparent modals
     Set the card background to transparent using <code>cardStyle</code>
   </li>
   <li>
-    Use a fade animation instead of the default animation
+    Use a custom animation instead of the default platform animation (we'll use fade in this case)
   </li>
   <li>
     Disable the header with <code>headerMode="none"</code> (optional)
