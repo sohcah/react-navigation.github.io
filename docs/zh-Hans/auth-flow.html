@@ -127,7 +127,7 @@
           <span class="token keyword">return</span> <span class="token punctuation">{</span>
             <span class="token operator">...</span>prevState<span class="token punctuation">,</span>
             isSignout<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-            userToken<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+            userToken<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
           <span class="token punctuation">}</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -206,7 +206,7 @@
 <span class="token keyword">return</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AuthContext.Provider</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>authContext<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token punctuation">{</span>state<span class="token punctuation">.</span>userToken <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token punctuation">(</span>
+      </span><span class="token punctuation">{</span>state<span class="token punctuation">.</span>userToken <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token punctuation">(</span>
         <span class="token comment">// No token found, user isn't signed in</span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
           <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>SignIn<span class="token punctuation">"</span></span>
