@@ -113,14 +113,14 @@
   <span class="token keyword">const</span> <span class="token punctuation">[</span>initialState<span class="token punctuation">,</span> setInitialState<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   React<span class="token punctuation">.</span><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span>
+    Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
       <span class="token function">getInitialState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=></span>
         <span class="token comment">// Timeout in 150ms if `getInitialState` doesn't resolve</span>
         <span class="token comment">// Workaround for https://github.com/facebook/react-native/issues/25675</span>
         <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">)</span>
       <span class="token punctuation">)</span>
-    <span class="token punctuation">)</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
