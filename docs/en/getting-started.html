@@ -99,6 +99,10 @@
 <p>If you're on a Mac and developing for iOS, you need to install pods to complete the linking. Make sure you have <a href="https://cocoapods.org/">Cocoapods</a> installed. Then run:</p>
 <pre><code class="hljs css language-sh"><span class="hljs-built_in">cd</span> ios; pod install; <span class="hljs-built_in">cd</span> ..
 </code></pre>
+<p>To finalize installation of <code>react-native-screens</code> for Android, add the following two lines to <code>dependencies</code> section in <code>android/app/build.gradle</code>:</p>
+<pre><code class="hljs css language-gradle">implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0-rc01'</span>
+implementation <span class="hljs-string">'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'</span>
+</code></pre>
 <p>To finalize installation of <code>react-native-gesture-handler</code>, add the following at the <strong>top</strong> (make sure it's at the top and there's nothing else before it) of your entry file, such as <code>index.js</code> or <code>App.js</code>:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token string">'react-native-gesture-handler'</span><span class="token punctuation">;</span>
 </code></pre>
