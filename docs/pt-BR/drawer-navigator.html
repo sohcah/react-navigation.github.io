@@ -1,0 +1,619 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>createDrawerNavigator · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;div style=&quot;display: flex; justify-content: center&quot;&gt;"/><meta name="docsearch:version" content="5.x"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="createDrawerNavigator · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="&lt;div style=&quot;display: flex; justify-content: center&quot;&gt;"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/pt-BR"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/pt-BR/versions.html"><h3>5.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/pt-BR/getting-started.html" target="_self">Docs</a></li><li class=""><a href="/pt-BR/help.html" target="_self">Ajuda</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Português (Brasil)</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/drawer-navigator.html">English</a></li><li><a href="/docs/zh-Hans/drawer-navigator.html">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Navigators</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Fundamentos<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/params.html">Passing parameters to routes</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/nesting-navigators.html">Nesting navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/app-containers.html">App containers</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/glossary-of-terms.html">Glossary of terms</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/compatibility.html">Compatibility layer</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/troubleshooting.html">Troubleshooting</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/limitations.html">Limitations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Guias<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/handling-safe-area.html">Supporting safe areas</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/screen-options-resolution.html">Screen options resolution</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/screen-tracking.html">Screen tracking for analytics</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/themes.html">Themes</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/state-persistence.html">State persistence</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/typescript.html">Type checking with TypeScript</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/redux-integration.html">Redux integration</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/MST-integration.html">MobX State Tree integration</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/localization.html">Localization</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/web-support.html">Web support</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/function-after-focusing-screen.html">Call a function when focused screen changes</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/react-native-screens.html">Optimize memory usage and performance</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/upgrading-from-4.x.html">Upgrading from 4.x</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Referência da API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/route-prop.html">Route prop</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/navigation-prop.html">Navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/navigation-context.html">NavigationContext</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Navigators</h4><ul><li class="navListItem"><a class="navItem" href="/docs/pt-BR/stack-navigator.html">createStackNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/native-stack-navigator.html">createNativeStackNavigator</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/pt-BR/drawer-navigator.html">createDrawerNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/bottom-tab-navigator.html">createBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/material-bottom-tab-navigator.html">createMaterialBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/material-top-tab-navigator.html">createMaterialTopTabNavigator</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Hooks</h4><ul><li class="navListItem"><a class="navItem" href="/docs/pt-BR/use-navigation.html">useNavigation</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/use-route.html">useRoute</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/use-navigation-state.html">useNavigationState</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/use-focus-effect.html">useFocusEffect</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/use-is-focused.html">useIsFocused</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/use-linking.html">useLinking</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/use-scroll-to-top.html">useScrollToTop</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Actions</h4><ul><li class="navListItem"><a class="navItem" href="/docs/pt-BR/navigation-actions.html">CommonActions</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/stack-actions.html">StackActions</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/drawer-actions.html">DrawerActions</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/tab-actions.html">TabActions</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Construa seu próprio navegador<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/custom-navigators.html">Custom navigators</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Recursos adicionais<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Meta<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/drawer-navigator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">createDrawerNavigator</h1></header><article><div><span><div style="display: flex; justify-content: center">
+  <video width="60%" playsinline autoplay muted loop>
+    <source src="/docs/assets/navigators/drawer/drawer.mov">
+  <video>
+</div>
+<p>Component that renders a navigation drawer which can be opened and closed via gestures.</p>
+<p>To use this navigator, ensure that you have <a href="getting-started.html"><code>@react-navigation/native</code> and its dependencies (follow this guide)</a>, then install <a href="https://github.com/react-navigation/react-navigation/tree/master/packages/drawer"><code>@react-navigation/drawer</code></a>:</p>
+<pre><code class="hljs css language-sh">npm install @react-navigation/drawer
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="api-definition"></a><a href="#api-definition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API Definition</h2>
+<p>To use this drawer navigator, import it from <code>@react-navigation/drawer</code>:</p>
+<p><samp id="simple-drawer"></p></p>
+<pre><code class="js">import { createDrawerNavigator } from '@react-navigation/drawer';
+<p>const Drawer = createDrawerNavigator();</p>
+<p>function MyDrawer() {
+return (
+&lt;Drawer.Navigator&gt;
+&lt;Drawer.Screen name=&quot;Feed&quot; component={Feed} /&gt;
+&lt;Drawer.Screen name=&quot;Article&quot; component={Article} /&gt;
+&lt;/Drawer.Navigator&gt;
+);
+}
+</code></pre></p>
+<blockquote spaces-before="0">
+  <p spaces-before="0">
+    For a complete usage guide please visit <a href="drawer-based-navigation.html">Drawer Navigation</a>.
+  </p>
+</blockquote>
+<p><h3 spaces-before="0">
+Props
+</h3></p>
+<p spaces-before="0">
+  The <code>Drawer.Navigator</code> component accepts following props:
+</p>
+<p><h4 spaces-before="0">
+<code>initialRouteName</code>
+</h4></p>
+<p spaces-before="0">
+  The name of the route to render on first load of the navigator.
+</p>
+<p><h4 spaces-before="0">
+<code>screenOptions</code>
+</h4></p>
+<p spaces-before="0">
+  Default options to use for the screens in the navigator.
+</p>
+<p><h4 spaces-before="0">
+<code>backBehavior</code>
+</h4></p>
+<p spaces-before="0">
+  Behavior of back button handling.
+</p>
+<ul>
+  <li>
+    <code>initialRoute</code> to return to initial tab
+  </li>
+  <li>
+    <code>order</code> to return to previous tab (in the order they are shown in the tab bar)
+  </li>
+  <li>
+    <code>history</code> to return to last visited tab
+  </li>
+  <li>
+    <code>none</code> to not handle back button
+  </li>
+</ul>
+<p><h4 spaces-before="0">
+<code>drawerPosition</code>
+</h4></p>
+<p spaces-before="0">
+  Options are <code>left</code> or <code>right</code>. Padrão da posição é <code>left</code>.
+</p>
+<p><h4 spaces-before="0">
+<code>drawerType</code>
+</h4></p>
+<p spaces-before="0">
+  Type of the drawer. It determines how the drawer looks and animates.
+</p>
+<ul>
+  <li>
+    <code>front</code>: Traditional drawer which covers the screen with a overlay behind it.
+  </li>
+  <li>
+    <code>back</code>: The drawer is revealed behind the screen on swipe.
+  </li>
+  <li>
+    <code>slide</code>: Both the screen and the drawer slide on swipe to reveal the drawer.
+  </li>
+</ul>
+<p><h4 spaces-before="0">
+<code>edgeWidth</code>
+</h4></p>
+<p spaces-before="0">
+  Allows for defining how far from the edge of the content view the swipe gesture should activate
+</p>
+<p><h4 spaces-before="0">
+<code>hideStatusBar</code>
+</h4></p>
+<p spaces-before="0">
+  When set to true Drawer component will hide the OS status bar whenever the drawer is pulled or when it's in an "open" state.
+</p>
+<p><h4 spaces-before="0">
+<code>statusBarAnimation</code>
+</h4></p>
+<p spaces-before="0">
+  Animation of the statusbar when hiding it. use in combination with <code>hideStatusBar</code>.
+</p>
+<p><h4 spaces-before="0">
+<code>keyboardDismissMode</code>
+</h4></p>
+<p spaces-before="0">
+  Whether the keyboard should be dismissed when the swipe gesture begins. Defaults to <code>'on-drag'</code>. Set to <code>'none'</code> to disable keyboard handling.
+</p>
+<p><h4 spaces-before="0">
+<code>minSwipeDistance</code>
+</h4></p>
+<p spaces-before="0">
+  Minimum swipe distance threshold that should activate opening the drawer.
+</p>
+<p><h4 spaces-before="0">
+<code>overlayColor</code>
+</h4></p>
+<p spaces-before="0">
+  Color overlay to be displayed on top of the content view when drawer gets open. The opacity is animated from <code>0</code> to <code>1</code> when the drawer opens.
+</p>
+<p><h4 spaces-before="0">
+<code>gestureHandlerProps</code>
+</h4></p>
+<p spaces-before="0">
+  Props to pass to the underlying pan gesture handler.
+</p>
+<p><h4 spaces-before="0">
+<code>lazy</code>
+</h4></p>
+<p spaces-before="0">
+  Whether the screens should render the first time they are accessed. O padrão é <code>true</code>. Set it to <code>false</code> if you want to render all screens on initial render.
+</p>
+<p><h4 spaces-before="0">
+<code>sceneContainerStyle</code>
+</h4></p>
+<p spaces-before="0">
+  Style object for the component wrapping the screen content.
+</p>
+<p><h4 spaces-before="0">
+<code>drawerStyle</code>
+</h4></p>
+<p spaces-before="0">
+  Style object for the drawer component. You can pass a custom background color for a drawer or a custom width here.
+</p>
+<p spaces-before="0">
+  <samp id="drawer-with-style"></p> 
+  <pre><code class="js">&lt;Drawer.Navigator
+  drawerStyle={{
+    backgroundColor: '#c6cbef',
+    width: 240,
+  }}
+&gt;
+  {/* screens */}
+&lt;/Drawer.Navigator&gt;
+</code></pre>
+<p><h4 spaces-before="0">
+<code>drawerContent</code>
+</h4></p>
+<p spaces-before="0">
+  Function that returns React element to render as the content of the drawer, for example, navigation items
+</p>
+<p spaces-before="0">
+  The content component receives following props by default:
+</p>
+<ul>
+  <li>
+    <code>state</code> - The navigation state of the navigator, <code>state.routes</code> contains list of all routes
+  </li>
+  <li>
+    <code>navigation</code> - The navigation object for the navigator.
+  </li>
+  <li>
+    <code>descriptors</code> - An descriptor object containing options for the drawer screens. The options can be accessed at <code>descriptors[route.key].options</code>.
+  </li>
+  <li>
+    <code>progress</code> - Reanimated Node that represents the animated position of the drawer (0 is closed; 1 is open).
+  </li>
+</ul>
+<p><h5 spaces-before="0">
+Providing a custom <code>drawerContent</code>
+</h5></p>
+<p spaces-before="0">
+  O componente padrão do drawer é rolável e contém apenas links para as rotas no RouteConfig. Você pode facilmente substituir o componente padrão para adicionar um cabeçalho, rodapé ou outro conteúdo ao drawer. The default content component is exported as <code>DrawerContent</code>. It renders a <code>DrawerItemList</code> component inside a <code>ScrollView</code>.
+</p>
+<p spaces-before="0">
+  By default the drawer is scrollable and supports devices with notches. If you customize the content, you can use <code>DrawerContentScrollView</code> to handle this automatically:
+</p>
+<pre><code class="js">import {
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+<p>function CustomDrawerContent(props) {
+return (
+&lt;DrawerContentScrollView {...props}&gt;
+&lt;DrawerItemList {...props} /&gt;
+&lt;/DrawerContentScrollView&gt;
+);
+}
+</code></pre></p>
+<p spaces-before="0">
+  To add additional items in the drawer, you can use the <code>DrawerItem</code> component:
+</p>
+<p spaces-before="0">
+  <samp id="custom-drawer-content"></p> 
+  <pre><code class="js">function CustomDrawerContent(props) {
+  return (
+    &lt;DrawerContentScrollView {...props}&gt;
+      &lt;DrawerItemList {...props} /&gt;
+      &lt;DrawerItem
+        label="Help"
+        onPress={() =&gt; Linking.openUrl('https://mywebsite.com/help')}
+      /&gt;
+    &lt;/DrawerContentScrollView&gt;
+  );
+}
+</code></pre>
+  <p spaces-before="0">
+    The <code>DrawerItem</code> component accepts the following props:
+  </p>
+  <ul>
+    <li>
+      <code>label</code> (required): The label text of the item. Can be string, or a function returning a react element. e.g. <code>({ focused, color }) =&gt; &lt;Text style={{ color }}&gt;{focused ? 'Focused text' : 'Unfocused text'}&lt;/Text&gt;</code>.
+    </li>
+    <li>
+      <code>icon</code>: Icon to display for the item. Accepts a function returning a react element. e.g. <code>({ focused, color, size }) =&gt; &lt;Icon color={color} size={size} name={focused ? 'heart' : 'heart-outline'} /&gt;</code>.
+    </li>
+    <li>
+      <code>focused</code>: Boolean indicating whether to highlight the drawer item as active.
+    </li>
+    <li>
+      <code>onPress</code> (required): Function to execute on press.
+    </li>
+    <li>
+      <code>activeTintColor</code>: Color for the icon and label when the item is active.
+    </li>
+    <li>
+      <code>inactiveTintColor</code>: Color for the icon and label when the item is inactive.
+    </li>
+    <li>
+      <code>activeBackgroundColor</code>: Background color for item when it's active.
+    </li>
+    <li>
+      <code>inactiveBackgroundColor</code>: Background color for item when it's inactive.
+    </li>
+    <li>
+      <code>labelStyle</code>: Style object for the label <code>Text</code>.
+    </li>
+    <li>
+      <code>style</code>: Style object for the wrapper <code>View</code>.
+    </li>
+  </ul>
+  <p spaces-before="0">
+    The <code>progress</code> node can be used to do interesting animations in your <code>drawerContent</code>, such as parallax motion of the drawer contents:
+  </p>
+  <p spaces-before="0">
+    <samp id="animated-drawer-content"></p> 
+<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;function CustomDrawerContent({ progress, ...rest }) {
+</code></pre>
+<p>const translateX = Animated.interpolate(progress, {
+inputRange: [0, 1],
+outputRange: [-100, 0],
+});</p>
+<p>return (
+&lt;Animated.View style={{ transform: [{ translateX }] }}&gt;
+{/* ... drawer contents */}
+&lt;/Animated.View&gt;
+);
+}
+</code></pre></p>
+<pre><code class="hljs">&lt;p spaces-before=&quot;0&quot;&gt;
+  To use the custom component, we need to pass it in the &lt;code&gt;drawerContent&lt;/code&gt; prop:
+&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Drawer.Navigator drawerContent={props =&amp;gt; &amp;lt;CustomDrawerContent {...props} /&amp;gt;}&amp;gt;
+</code></pre>
+<p>{/* screens */}
+&lt;/Drawer.Navigator&gt;
+</code></pre></p>
+<p><h4 spaces-before="0">
+<code>drawerContentOptions</code>
+</h4></p>
+<p spaces-before="0">
+  An object containing the props for the drawer content component. See below for more details.
+</p>
+<p><h5 spaces-before="0">
+<code>activeTintColor</code>
+</h5></p>
+<p spaces-before="0">
+  Color for the icon and label in the active item in the drawer.
+</p>
+<p><h5 spaces-before="0">
+<code>activeBackgroundColor</code>
+</h5></p>
+<p spaces-before="0">
+  Background color for the active item in the drawer.
+</p>
+<p><h5 spaces-before="0">
+<code>inactiveTintColor</code>
+</h5></p>
+<p spaces-before="0">
+  Color for the icon and label in the inactive items in the drawer.
+</p>
+<p><h5 spaces-before="0">
+<code>inactiveBackgroundColor</code>
+</h5></p>
+<p spaces-before="0">
+  Background color for the inactive items in the drawer.
+</p>
+<p><h5 spaces-before="0">
+<code>itemStyle</code>
+</h5></p>
+<p spaces-before="0">
+  Style object for the single item, which can contain an icon and/or a label.
+</p>
+<p><h5 spaces-before="0">
+<code>labelStyle</code>
+</h5></p>
+<p spaces-before="0">
+  Style object to apply to the <code>Text</code> style inside content section which renders a label.
+</p>
+<p><h5 spaces-before="0">
+<code>contentContainerStyle</code>
+</h5></p>
+<p spaces-before="0">
+  Style object for the content section inside the <code>ScrollView</code>.
+</p>
+<p><h5 spaces-before="0">
+<code>style</code>
+</h5></p>
+<p spaces-before="0">
+  Style object for the wrapper view.
+</p>
+<p spaces-before="0">
+  Exemplo:
+</p>
+<p spaces-before="0">
+  <samp id="drawer-content-options"></p> 
+  <pre><code class="js">&lt;Drawer.Navigator
+  drawerContentOptions={{
+    activeTintColor: '#e91e63',
+    itemStyle: { marginVertical: 30 },
+  }}
+&gt;
+  {/* screens */}
+&lt;/Drawer.Navigator&gt;
+</code></pre>
+<p><h3 spaces-before="0">
+Options
+</h3></p>
+<p spaces-before="0">
+  The <code>options</code> prop can be used to configure individual screens inside the navigator. Supported options are:
+</p>
+<p><h4 spaces-before="0">
+<code>title</code>
+</h4></p>
+<p spaces-before="0">
+  Título genérico que pode ser usado como fallback para <code>headerTitle</code> e <code>drawerLabel</code>
+</p>
+<p><h4 spaces-before="0">
+<code>drawerLabel</code>
+</h4></p>
+<p spaces-before="0">
+  String or a function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in drawer sidebar. When undefined, scene <code>title</code> is used
+</p>
+<p><h4 spaces-before="0">
+<code>drawerIcon</code>
+</h4></p>
+<p spaces-before="0">
+  Function, that given <code>{ focused: boolean, color: string, size: number }</code> returns a React.Node, to display in drawer sidebar
+</p>
+<p><h4 spaces-before="0">
+<code>gestureEnabled</code>
+</h4></p>
+<p spaces-before="0">
+  Whether you can use gestures to open or close the drawer. O padrão é <code>true</code>.
+</p>
+<p><h4 spaces-before="0">
+<code>unmountOnBlur</code>
+</h4></p>
+<p spaces-before="0">
+  Whether this screen should be unmounted when navigating away from it. Unmounting a screen resets any local state in the screen as well as state of nested navigators in the screen. O padrão é <code>false</code>.
+</p>
+<p><h3 spaces-before="0">
+Events
+</h3></p>
+<p spaces-before="0">
+  The navigator can emit events on certain actions. Supported events are:
+</p>
+<p><h4 spaces-before="0">
+<code>drawerOpen</code>
+</h4></p>
+<p spaces-before="0">
+  This event is fired when the drawer opens.
+</p>
+<p spaces-before="0">
+  Exemplo:
+</p>
+<pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('drawerOpen', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
+<p><h4 spaces-before="0">
+<code>drawerClose</code>
+</h4></p>
+<p spaces-before="0">
+  This event is fired when the drawer closes.
+</p>
+<p spaces-before="0">
+  Exemplo:
+</p>
+<pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('drawerClose', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
+<p><h3 spaces-before="0">
+Helpers
+</h3></p>
+<p spaces-before="0">
+  The drawer navigator adds the following methods to the navigation prop:
+</p>
+<p><h4 spaces-before="0">
+<code>openDrawer</code>
+</h4></p>
+<p spaces-before="0">
+  Opens the drawer pane.
+</p>
+<p spaces-before="0">
+  <samp id="drawer-open-close-toggle"></p> 
+  <pre><code class="js">navigation.openDrawer();
+</code></pre>
+<p><h4 spaces-before="0">
+<code>closeDrawer</code>
+</h4></p>
+<p spaces-before="0">
+  Closes the drawer pane.
+</p>
+<p spaces-before="0">
+  <samp id="drawer-open-close-toggle"></p> 
+  <pre><code class="js">navigation.closeDrawer();
+</code></pre>
+<p><h4 spaces-before="0">
+<code>toggleDrawer</code>
+</h4></p>
+<p spaces-before="0">
+  Opens the drawer pane if closed, closes the drawer pane if opened.
+</p>
+<p spaces-before="0">
+  <samp id="drawer-open-close-toggle"></p> 
+  <pre><code class="js">navigation.toggleDrawer();
+</code></pre>
+<p><h4 spaces-before="0">
+<code>jumpTo</code>
+</h4></p>
+<p spaces-before="0">
+  Navigates to an existing screen in the drawer navigator. The method accepts following arguments:
+</p>
+<ul>
+  <li>
+    <code>name</code> - <em x-id="4">string</em> - Name of the route to jump to.
+  </li>
+  <li>
+    <code>params</code> - <em x-id="4">object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).
+  </li>
+</ul>
+<p spaces-before="0">
+  <samp id="drawer-example"></p> 
+  <pre><code class="js">navigation.jumpTo('Profile', { owner: 'Satya' });
+</code></pre>
+<p><h2 spaces-before="0">
+Example
+</h2></p>
+<p spaces-before="0">
+  <samp id="drawer-example"></p> 
+  <pre><code class="js">import { createDrawerNavigator } from '@react-navigation/drawer';
+<p>const Drawer = createDrawerNavigator();</p>
+<p>function MyDrawer() {
+return (
+&lt;Drawer.Navigator initialRouteName=&quot;Feed&quot;&gt;
+&lt;Drawer.Screen
+name=&quot;Feed&quot;
+component={Feed}
+options={{ drawerLabel: 'Home' }}
+/&gt;
+&lt;Drawer.Screen
+name=&quot;Notifications&quot;
+component={Notifications}
+options={{ drawerLabel: 'Updates' }}
+/&gt;
+&lt;Drawer.Screen
+name=&quot;Profile&quot;
+component={Profile}
+options={{ drawerLabel: 'Profile' }}
+/&gt;
+&lt;/Drawer.Navigator&gt;
+);
+}
+</code></pre></p>
+<p><h2 spaces-before="0">
+Checking if the drawer is open
+</h2></p>
+<p spaces-before="0">
+  You can check if the drawer is open by using the <code>useIsDrawerOpen</code> hook.
+</p>
+<pre><code class="js">import { useIsDrawerOpen } from '@react-navigation/drawer';
+<p>// ...</p>
+<p>const isDrawerOpen = useIsDrawerOpen();
+</code></pre></p>
+<p><h2 spaces-before="0">
+Nesting drawer navigators inside others
+</h2></p>
+<p spaces-before="0">
+  Se um navegador drawer estiver aninhado em outro navegador que forneça alguma interface do usuário, por exemplo, um navegador tabs ou um navegador stack, a gaveta será renderizada abaixo da interface do usuário a partir desses navegadores. O drawer aparecerá abaixo do tab e abaixo do cabeçalho do stack. Você precisará tornar o navegador drawer o pai de qualquer navegador onde o drawer deve ser renderizado na parte superior de sua interface do usuário.
+</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/native-stack-navigator.html"><span class="arrow-prev">← </span><span>Anterior</span></a><a class="docs-next button" href="/docs/pt-BR/bottom-tab-navigator.html"><span>Próximo</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-definition">API Definition</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

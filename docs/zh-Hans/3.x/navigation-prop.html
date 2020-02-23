@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Navigation prop reference · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="应用中的每个页面组件都会自动提供 `navigation` prop， 该 prop 包含便捷的方法用于触发导航操作， 如下所示:"/><meta name="docsearch:version" content="3.x"/><meta name="docsearch:language" content="zh-Hans"/><meta property="og:title" content="Navigation prop reference · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="应用中的每个页面组件都会自动提供 `navigation` prop， 该 prop 包含便捷的方法用于触发导航操作， 如下所示:"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-Hans"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/zh-Hans/versions.html"><h3>3.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-Hans/3.x/getting-started.html" target="_self">文档</a></li><li class=""><a href="/zh-Hans/help.html" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/3.x/navigation-prop.html">English</a></li><li><a href="/docs/pt-BR/3.x/navigation-prop.html">Português (Brasil)</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>阅读 API 参考</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">基础<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/params.html">Passing parameters to routes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/app-containers.html">App containers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/glossary-of-terms.html">Glossary of terms</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/common-mistakes.html">Common mistakes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/react-native-screens.html">Optimize memory usage and performance</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/limitations.html">Limitations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">指南<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/handling-iphonex.html">Supporting safe areas</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-options-resolution.html">Navigation options resolution</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-key.html">Using the navigation key</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/screen-tracking.html">Screen tracking for analytics</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/themes.html">Themes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/state-persistence.html">State persistence</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/redux-integration.html">Redux integration</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/MST-integration.html">MobX State Tree integration</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/localization.html">Localization</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/web-support.html">Web support</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/function-after-focusing-screen.html">Call a function when focused screen changes</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">阅读 API 参考<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-prop.html">Navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-context.html">NavigationContext</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-events.html">NavigationEvents</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Navigators</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/stack-navigator.html">createStackNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/switch-navigator.html">createSwitchNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/animated-switch-navigator.html">createAnimatedSwitchNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/drawer-navigator.html">createDrawerNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/bottom-tab-navigator.html">createBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/material-bottom-tab-navigator.html">createMaterialBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/material-top-tab-navigator.html">createMaterialTopTabNavigator</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Actions</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-actions.html">NavigationActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/stack-actions.html">StackActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/switch-actions.html">SwitchActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/drawer-actions.html">DrawerActions</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Helpers</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/with-navigation.html">withNavigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/with-navigation-focus.html">withNavigationFocus</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/scrollables.html">Scrollables</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">构建自己的导航<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-navigator-overview.html">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/routers.html">Routers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-navigators.html">Custom navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-views.html">Navigation views</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/transitioner.html">Transitioner</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">相关资源<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">其他<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/navigation-prop.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Navigation prop reference</h1></header><article><div><span><p>应用中的每个页面组件都会自动提供 <code>navigation</code> prop， 该 prop 包含便捷的方法用于触发导航操作， 如下所示:</p>
+<ul>
+<li><code>this.props.navigation</code>
+<ul>
+<li><code>navigate</code> -转到另一个屏幕, 计算出需要执行的操作</li>
+<li><code>goBack</code> -关闭活动屏幕并在堆栈中向后移动</li>
+<li><code>addListener</code> -订阅导航生命周期的更新</li>
+<li><code>isFocused</code> -函数返回 <code>true</code> 如果屏幕焦点和 <code>false</code> 否则。</li>
+<li><code>state</code> -当前状态/路由</li>
+<li><code>setParams</code> -对路由的参数进行更改</li>
+<li><code>getParam</code> -获取具有回退的特定参数</li>
+<li><code>dispatch</code> - 向路由发送 action</li>
+<li><code>dangerouslyGetParent</code> - 返回父级 navigator 的函数</li>
+</ul></li>
+</ul>
+<p>重要的是要强调<code>navigation</code> prop <em>不</em>传递给<em>所有</em>组件; 只有<code>screen</code>组件会自动收到此 prop！ React Navigation在这里没有做神奇的操作。 例如，如果要定义<code>MyBackButton</code>组件并将其呈现为屏幕组件的子组件，则无法访问其上的<code>navigation prop</code>。 如果你想在任何组件中都要访问 <code>navigation</code>，你可以使用<a href="with-navigation.html"><code>withNavigation</code></a> HOC。</p>
+<h3><a class="anchor" aria-hidden="true" id="navigator-dependent-functions"></a><a href="#navigator-dependent-functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigator-dependent functions</h3>
+<p><code>this.props.navigation</code> 上有一些取决于当前 navigator 的附加函数</p>
+<p>如果是 StackNavigator，除了<code>navigate</code> 和 <code>goBack</code> ，还提供了如下方法：</p>
+<ul>
+<li><code>this.props.navigation</code>
+<ul>
+<li><code>push</code> - 推一个新的路由到堆栈</li>
+<li><code>pop</code> - 返回堆栈中的上一个页面</li>
+<li><code>popToTop</code> - 跳转到堆栈中最顶层的页面</li>
+<li><code>replace</code> - 用新路由替换当前路由</li>
+<li><code>reset</code>操作会擦除整个导航状态，并将其替换为多个操作的结果。</li>
+<li><code>dismiss</code> - 关闭当前堆栈</li>
+</ul></li>
+</ul>
+<p>如果是 DrawerNavigator, 则还可以使用以下选项:</p>
+<ul>
+<li><code>this.props.navigation</code>
+<ul>
+<li><code>openDrawer</code> - 打开</li>
+<li><code>closeDrawer</code> - 关闭</li>
+<li><code>toggleDrawer</code> - 切换，如果是打开则关闭，反之亦然</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="通用-api-参考"></a><a href="#通用-api-参考" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>通用 API 参考</h2>
+<p><code>navigation</code> 相关的操作大部分都涉及到 <code>navigate</code>、<code>goBack</code>、<code>state</code> 、 <code>setParams</code> 和 <code>getParams</code>。</p>
+<h3><a class="anchor" aria-hidden="true" id="navigate---链接到其它页面"></a><a href="#navigate---链接到其它页面" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>navigate</code> - 链接到其它页面</h3>
+<p>调用此方法可跳转到应用程序中的另一个页面. 可采用以下参数:</p>
+<p><code>navigation.navigate({ routeName, params, action, key })</code></p>
+<p>或者</p>
+<p><code>navigation.navigate(routeName, params, action)</code></p>
+<ul>
+<li><code>routeName</code> - 已在应用程序路由器中某处注册的目标routeName</li>
+<li><code>params</code> - 合并到目标路由的参数</li>
+<li><code>action</code> -如果页面是 navigator，则是子路由中运行的子操作，有关支持的操作的完整列表，请参见 <a href="navigation-actions.html">Actions Doc</a></li>
+<li><code>key</code> - 要导航到的路由的可选标识符。 如果已存在，将<strong>后退</strong>到此路由</li>
+</ul>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> navigate <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token plain-text">This is the home screen of the app</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
+          <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">'Profile'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Brent'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+          <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Go to Brent's profile<span class="token punctuation">"</span></span>
+        <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="goback---关闭当前页面并返回上一个页面"></a><a href="#goback---关闭当前页面并返回上一个页面" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>goBack</code> - 关闭当前页面并返回上一个页面</h3>
+<p>可以选择提供一个 key, 指定要返回的路由。 默认情况下, <code>goBack</code> 将关闭调用该方法的页面 如果目标是在</em>任何位置返回 *, 而不指定要关闭的内容, 请调用 <code>. goBack (null);</code> 注意, <code>null</code> 参数在嵌套 <code>StackNavigators</code> 的情况下很有用 如果子导航器在堆栈中已经只有一个项目, 则返回父导航器。 如果感到疑惑, 不要担心, 这个 API 需要下一些功夫。</p></p>
+<p>Note -- a key is not the name of the route but the unique identifier you provided when navigating to the route. See <a href="navigation-key.html">navigation key</a>.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> goBack <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">goBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Go back from this HomeScreen<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">goBack</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Go back anywhere<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
+          <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">goBack</span><span class="token punctuation">(</span><span class="token string">'key-123'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+          <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Go back from key-123<span class="token punctuation">"</span></span>
+        <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="使用--goback-从一个指定的页面返回"></a><a href="#使用--goback-从一个指定的页面返回" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用 <code>goBack</code>从一个指定的页面返回</h3>
+<p>请记住以下导航堆栈历史记录：</p>
+<pre><code class="hljs css language-javascript">navigation.navigate({<span class="hljs-attr">routeName</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_A});
+navigation.navigate({<span class="hljs-attr">routeName</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_B});
+navigation.navigate({<span class="hljs-attr">routeName</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_C});
+navigation.navigate({<span class="hljs-attr">routeName</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_D});
+</code></pre>
+<p>现在你在* screen D <em>上，并且想要回到</em> screen A *（销毁D、C和B）。 然后你需要提供一个 goBack * FROM *的 key：</p>
+<pre><code class="hljs">navigation.goBack(SCREEN_KEY_B)//将从 screen B 跳转到 screen A
+</code></pre>
+<p>如果，* screen A * 在堆栈的顶部, 你可以使用 <code>navigation.popToTop()</code>方法。</p>
+<h3><a class="anchor" aria-hidden="true" id="addlistener---订阅导航生命周期的更新"></a><a href="#addlistener---订阅导航生命周期的更新" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>addListener</code> - 订阅导航生命周期的更新</h3>
+<p>React Navigation 将事件发送到订阅了它们的页面组件：</p>
+<ul>
+<li><code>willFocus</code> -页面将获取焦点</li>
+<li><code>didFocus</code> - 页面已获取到焦点（如果有过渡动画，等过渡动画执行完成后响应）</li>
+<li><code>willBlur</code> - 页面将失去焦点</li>
+<li><code>didFocus</code> - 页面已获取到焦点（如果有过渡动画，等过渡动画执行完成后响应）</li>
+</ul>
+<p>例子:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> didBlurSubscription = <span class="hljs-keyword">this</span>.props.navigation.addListener(
+  <span class="hljs-string">'didBlur'</span>,
+  payload =&gt; {
+    <span class="hljs-built_in">console</span>.debug(<span class="hljs-string">'didBlur'</span>, payload);
+  }
+);
+
+<span class="hljs-comment">// Remove the listener when you are done</span>
+didBlurSubscription.remove();
+</code></pre>
+<p>JSON 格式的参数:</p>
+<pre><code class="hljs css language-javascript">{
+  <span class="hljs-attr">action</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">'Navigation/COMPLETE_TRANSITION'</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">'StackRouterRoot'</span> },
+  <span class="hljs-attr">context</span>: <span class="hljs-string">'id-1518521010538-2:Navigation/COMPLETE_TRANSITION_Root'</span>,
+  <span class="hljs-attr">lastState</span>: <span class="hljs-literal">undefined</span>,
+  <span class="hljs-attr">state</span>: <span class="hljs-literal">undefined</span>,
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'didBlur'</span>,
+};
+</code></pre>
+<p>你也可以用 <a href="navigation-events.html"><code>&lt;NavigationEvents/&gt;</code></a>组件 以声明的方式订阅导航事件。</p>
+<h3><a class="anchor" aria-hidden="true" id="isfocused---查询页面是否获取到焦点"></a><a href="#isfocused---查询页面是否获取到焦点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>isFocused</code> - 查询页面是否获取到焦点</h3>
+<p>如果页面已获取到焦点，则返回 <code>true</code> 否则返回 <code>false</code>。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">let</span> isFocused <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">isFocused</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>您可能希望使用 <a href="with-navigation-focus.html">withNavigationFocus</a> 而不是直接使用此方法, 它将传入一个布尔型的 prop -- <code>isFocused</code> 到你的组件。</p>
+<h3><a class="anchor" aria-hidden="true" id="-state----当前的-state-或-route"></a><a href="#-state----当前的-state-或-route" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>state</code> - 当前的 state 或 route</h3>
+<p>页面可以通过 <code>this.props.navigation.state</code>访问其路由。每一个都将返回一个对象, 其内容如下:</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+  <span class="token comment">// the name of the route config in the router</span>
+  routeName<span class="token operator">:</span> <span class="token string">'profile'</span><span class="token punctuation">,</span>
+  <span class="token comment">//a unique identifier used to sort routes</span>
+  key<span class="token operator">:</span> <span class="token string">'main0'</span><span class="token punctuation">,</span>
+  <span class="token comment">//an optional object of string options for this screen</span>
+  params<span class="token operator">:</span> <span class="token punctuation">{</span> hello<span class="token operator">:</span> <span class="token string">'world'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>通过` navigate &lt;/ code&gt;或<code> setParams &lt;/ code&gt;方法传入参数。是获取页面参数最常用的方法。</p></p>
+<pre><code class="js">class ProfileScreen extends React.Component {
+  render() {
+    return <Text>Name: {this.props.navigation.state.params.name}</Text>;
+  }
+}
+`</pre> 
+<h3><a class="anchor" aria-hidden="true" id="-setparams----对路由的参数进行更改"></a><a href="#-setparams----对路由的参数进行更改" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>setParams</code> - 对路由的参数进行更改</h3>
+<p>触发<code>setParams</code>方法允许页面更改路由中的参数，这对于更新标题按钮和标题文本很有用。 <code>setParams</code> 就像 React 的 <code>setState</code> -他会将原来的参数与现在的参数合并</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">ProfileScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
+        <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">setParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Lucy'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Set title name to 'Lucy'<span class="token punctuation">"</span></span>
+      <span class="token punctuation">/></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="getparam---获取指定的的参数，可设置获取失败的返回值"></a><a href="#getparam---获取指定的的参数，可设置获取失败的返回值" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>getParam</code> - 获取指定的的参数，可设置获取失败的返回值</h3>
+<p>过去, 当 <code>params</code> 未定义时, 你可能在获取 <code>params</code> 时遇到问题。 现在，你不必直接访问参数，可以调用 <code>getParam</code>方法。</p>
+<p>之前：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> name <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>params<span class="token punctuation">;</span>
+</code></pre>
+<p>如果 <code>params</code> <code>未定义</code>, 则此操作失败</p>
+<p>现在：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">getParam</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'Peter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果 <code>name</code> 或 <code>param</code> 未定义, 则返回 <code>Peter</code>。</p>
+<h2><a class="anchor" aria-hidden="true" id="stack-actions"></a><a href="#stack-actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stack Actions</h2>
+<p>下列操作将在所有 stack navigator 中起作用：</p>
+<h3><a class="anchor" aria-hidden="true" id="push"></a><a href="#push" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Push</h3>
+<p>类似于<code>navigate</code>, <code>push</code>将跳转到堆栈中的新的路由 与<code>navigate</code>的区别在于，如果有已经加载的页面，<code>navigate</code>方法将跳转到已经加载的页面，而不会重新创建一个新的页面。 <code>push</code> 总是会创建一个新的页面，所以一个页面可以被多次创建</p>
+<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>routeName<span class="token punctuation">,</span> params<span class="token punctuation">,</span> action<span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li><code>routeName</code> - A destination routeName that has been registered somewhere in the app's router.</li>
+<li><code>params</code> - Params to merge into the destination route.</li>
+<li><code>action</code> -如果页面是 navigator，则是子路由中运行的子操作，有关支持的操作的完整列表，请参见 <a href="navigation-actions.html">Actions Doc</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="pop"></a><a href="#pop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pop</h3>
+<p>Take you to the previous screen in the stack. If you provide a number, <code>n</code>, it will specify how many screens to take you back within the stack.</p>
+<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="poptotop"></a><a href="#poptotop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PopToTop</h3>
+<p>调用该方法将直接跳转到堆栈最顶层的路由，销毁其它所有页面。</p>
+<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">popToTop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="replace"></a><a href="#replace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Replace</h3>
+<p>调用该方法将使用指定的路由覆盖当前的页面，可以附带参数（<code>params</code>和 <code>sub-action</code>）</p>
+<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>routeName<span class="token punctuation">,</span> params<span class="token punctuation">,</span> action<span class="token punctuation">)</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="reset"></a><a href="#reset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reset</h3>
+<p>操作会擦除整个导航状态，并将其替换为多个操作的结果。</p>
+<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">[</span>NavigationActions<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">{</span> routeName<span class="token operator">:</span> <span class="token string">'Profile'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="dismiss"></a><a href="#dismiss" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dismiss</h3>
+<p>如果你想关闭整个 stack 回到父级 stack 中，调用这个方法</p>
+<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">dismiss</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="阅读-api-参考"></a><a href="#阅读-api-参考" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>阅读 API 参考</h2>
+<p>虽然 <code>dispatch</code> 方法并不常用，但是当使用 <code>navigate</code> 和 <code>goBack</code>无法满足要求时，该方法会是个不错的选择。</p>
+<h3><a class="anchor" aria-hidden="true" id="-dispatch----向路由发送-action"></a><a href="#-dispatch----向路由发送-action" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>dispatch</code> - 向路由发送 action</h3>
+<p>使用 <code>dispatch</code> 将任何导航操作发送到路由后，该操作都将具有最高优先级。</p>
+<p>请注意，如果您想分发 react-navigation 操作，则应使用此库中提供的操作创建者。</p>
+<p>有关可用操作的完整列表, 请参见 <a href="navigation-actions.html">导航操作文档</a>。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> navigateAction <span class="token operator">=</span> NavigationActions<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routeName<span class="token operator">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
+  params<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// navigate can have a nested navigate action that will be run inside the child router</span>
+  action<span class="token operator">:</span> NavigationActions<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">{</span> routeName<span class="token operator">:</span> <span class="token string">'SubProfileRoute'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>navigateAction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="dangerouslygetparent---get-parent-navigator"></a><a href="#dangerouslygetparent---get-parent-navigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>dangerouslyGetParent</code> - get parent navigator</h3>
+<p>例如，如果您有一个可以在多个导航器中显示的屏幕组件，则可以使用此组件根据其所在的导航器来影响其行为。</p>
+<p>另一个很好的用例是在父路由列表中查找活动路由的索引。 因此，如果您在索引0处于堆栈的情况下，那么您可能不想渲染后退按钮，但如果您在列表中的其他位置，那么您将渲染后退按钮。</p>
+<p>请务必始终检查调用是否返回有效值。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">UserCreateScreen</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> parent <span class="token operator">=</span> navigation<span class="token punctuation">.</span><span class="token function">dangerouslyGetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> gesturesEnabled <span class="token operator">=</span>
+      parent <span class="token operator">&amp;&amp;</span>
+      parent<span class="token punctuation">.</span>state <span class="token operator">&amp;&amp;</span>
+      parent<span class="token punctuation">.</span>state<span class="token punctuation">.</span>routeName <span class="token operator">===</span> <span class="token string">'StackWithEnabledGestures'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'New User'</span><span class="token punctuation">,</span>
+      gesturesEnabled
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/3.x/function-after-focusing-screen.html"><span class="arrow-prev">← </span><span>上一篇</span></a><a class="docs-next button" href="/docs/zh-Hans/3.x/navigation-context.html"><span>下一篇</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#通用-api-参考">通用 API 参考</a><ul class="toc-headings"><li><a href="#navigate---链接到其它页面"><code>navigate</code> - 链接到其它页面</a></li><li><a href="#goback---关闭当前页面并返回上一个页面"><code>goBack</code> - 关闭当前页面并返回上一个页面</a></li><li><a href="#使用--goback-从一个指定的页面返回">使用 <code>goBack</code>从一个指定的页面返回</a></li><li><a href="#addlistener---订阅导航生命周期的更新"><code>addListener</code> - 订阅导航生命周期的更新</a></li><li><a href="#isfocused---查询页面是否获取到焦点"><code>isFocused</code> - 查询页面是否获取到焦点</a></li><li><a href="#-state----当前的-state-或-route"><code>state</code> - 当前的 state 或 route</a></li><li><a href="#-setparams----对路由的参数进行更改"><code>setParams</code> - 对路由的参数进行更改</a></li><li><a href="#getparam---获取指定的的参数，可设置获取失败的返回值"><code>getParam</code> - 获取指定的的参数，可设置获取失败的返回值</a></li></ul></li><li><a href="#stack-actions">Stack Actions</a><ul class="toc-headings"><li><a href="#push">Push</a></li><li><a href="#pop">Pop</a></li><li><a href="#poptotop">PopToTop</a></li><li><a href="#replace">Replace</a></li><li><a href="#reset">Reset</a></li><li><a href="#dismiss">Dismiss</a></li></ul></li><li><a href="#阅读-api-参考">阅读 API 参考</a><ul class="toc-headings"><li><a href="#-dispatch----向路由发送-action"><code>dispatch</code> - 向路由发送 action</a></li><li><a href="#dangerouslygetparent---get-parent-navigator"><code>dangerouslyGetParent</code> - get parent navigator</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

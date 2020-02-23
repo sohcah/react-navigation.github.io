@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://reactnavigation.org/blog</id>
+    <title>React Navigation Blog</title>
+    <updated>2020-02-06T06:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://reactnavigation.org/blog"/>
+    <subtitle>The best place to stay up-to-date with the latest React Navigation news and events.</subtitle>
+    <logo>https://reactnavigation.org/img/spiro_white.svg</logo>
+    <rights>None</rights>
+    <entry>
+        <title type="html"><![CDATA[React Navigation 5.0 - A new way to navigate]]></title>
+        <id>https://reactnavigation.org/blog/2020/02/06/react-navigation-5.0.html</id>
+        <link href="https://reactnavigation.org/blog/2020/02/06/react-navigation-5.0.html"/>
+        <updated>2020-02-06T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Exactly two years ago, we published the first stable version of React Navigation. Throughout this time, the library has been actively developed by adding many new features and bug fixes. The essence of React Navigation was that it was a project that ...</p>]]></summary>
+        <author>
+            <name>Satyajit Sahoo, Michał Osadnik</name>
+            <email/>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React Navigation v5 + React Native Paper = ❤️]]></title>
+        <id>https://reactnavigation.org/blog/2020/01/29/using-react-navigation-5-with-react-native-paper.html</id>
+        <link href="https://reactnavigation.org/blog/2020/01/29/using-react-navigation-5-with-react-native-paper.html"/>
+        <updated>2020-01-29T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>This is a guest post by the <a href="https://reactnativepaper.com/">React Native Paper</a> team. If you like this guide, check out React Native Paper for more!</p> <p>In this blog post, we'll show you how to build a Twitter clone app using React Navigation v5 and Paper.</p> <h2><a class="anchor" aria-hidden="true" id="introduction"></a><a href="#introduction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Introduction</h2> <p>The React Navigat...</p>]]></summary>
+        <author>
+            <name>Dawid Urbaniak</name>
+            <email/>
+            <uri>https://twitter.com/trensik</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Using React Navigation 5 with UI Kitten]]></title>
+        <id>https://reactnavigation.org/blog/2019/11/04/using-react-navigation-5-with-ui-kitten.html</id>
+        <link href="https://reactnavigation.org/blog/2019/11/04/using-react-navigation-5-with-ui-kitten.html"/>
+        <updated>2019-11-04T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>This is a guest post by the <a href="http://akveo.github.io/react-native-ui-kitten">UI Kitten</a> team. If you like this guide, checkout UI Kitten for more! In this blog post, we'll show a step-by-step guide on using React Navigation 5 with UI Kitten.</p> <h2><a class="anchor" aria-hidden="true" id="introduction"></a><a href="#introduction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Introduction</h2> <p>The new React Navigation comes with several s...</p>]]></summary>
+        <author>
+            <name>Artur Yorsh</name>
+            <email/>
+            <uri>https://twitter.com/artyorsh</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React Navigation meets native]]></title>
+        <id>https://reactnavigation.org/blog/2019/10/17/react-navigation-native.html</id>
+        <link href="https://reactnavigation.org/blog/2019/10/17/react-navigation-native.html"/>
+        <updated>2019-10-17T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>React Navigation steps firmly into the next level and we’re very excited to announce to you something great happening in React Navigation codebase.</p> <h2><a class="anchor" aria-hidden="true" id="make-it-custom"></a><a href="#make-it-custom" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Make it custom</h2> <p>From the very beginning of React Navigation we have been following the important motto ...</p>]]></summary>
+        <author>
+            <name>Michał Osadnik</name>
+            <email/>
+            <uri>https://twitter.com/mosdnk</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React Navigation 4.0]]></title>
+        <id>https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html</id>
+        <link href="https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html"/>
+        <updated>2019-09-16T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>The documentation is now live at <a href="https://reactnavigation.org">https://reactnavigation.org</a>, and v3 lives <a href="/docs/en/3.x/getting-started.html">here</a>.</p> <p>In this release, we have removed the navigators from the react-navigation package. The navigators have lived in separate packages for quite a while and you could already...</p>]]></summary>
+        <author>
+            <name>Satyajit Sahoo</name>
+            <email/>
+            <uri>https://twitter.com/satya164</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React Navigation 3.0]]></title>
+        <id>https://reactnavigation.org/blog/2018/11/17/react-navigation-3.0.html</id>
+        <link href="https://reactnavigation.org/blog/2018/11/17/react-navigation-3.0.html"/>
+        <updated>2018-11-17T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>The documentation is now live at <a href="https://reactnavigation.org">https://reactnavigation.org</a>, and v2 lives <a href="/docs/en/2.x/getting-started.html">here</a>.</p> <p>This is the first release where React Navigation depends on a native module outside of React Native core: it now depends on react-native-gesture-handler. This library pr...</p>]]></summary>
+        <author>
+            <name>Core Team</name>
+            <email/>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[3.0 release candidate]]></title>
+        <id>https://reactnavigation.org/blog/2018/11/01/react-navigation-3.0-rc.html</id>
+        <link href="https://reactnavigation.org/blog/2018/11/01/react-navigation-3.0-rc.html"/>
+        <updated>2018-11-01T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>We are excited to announce the release candidate of version 3.0 today!</p> <p>This is the first release where React Navigation depends on a native module outside of React Native core: it now depends on react-native-gesture-handler. This library provides an ...</p>]]></summary>
+        <author>
+            <name>Core Team</name>
+            <email/>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React Navigation 2.0]]></title>
+        <id>https://reactnavigation.org/blog/2018/05/07/react-navigation-2.0.html</id>
+        <link href="https://reactnavigation.org/blog/2018/05/07/react-navigation-2.0.html"/>
+        <updated>2018-05-07T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>The documentation is now live at <a href="https://reactnavigation.org">https://reactnavigation.org</a>, and v1 lives <a href="/docs/en/1.x/getting-started.html">here</a>.</p> <h2><a class="anchor" aria-hidden="true" id="significant-breaking-changes"></a><a href="#significant-breaking-changes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Significant breaking changes</h2> <p>The following changes are considered “significant” because they can’t be fixed by search and replace or something that is similarly mechanic...</p>]]></summary>
+        <author>
+            <name>Core Team</name>
+            <email/>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2.0 release candidate]]></title>
+        <id>https://reactnavigation.org/blog/2018/04/06/react-navigation-2.0-rc.html</id>
+        <link href="https://reactnavigation.org/blog/2018/04/06/react-navigation-2.0-rc.html"/>
+        <updated>2018-04-06T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Exactly two months after the release of React Navigation 1.0, we are close to another major version release. We’d like to invite developers that use the library to give the release candidate a try in your app and let us know if you encounter any issu...</p>]]></summary>
+        <author>
+            <name>Core Team</name>
+            <email/>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React Navigation 1.0 (goodbye, beta!)]]></title>
+        <id>https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html</id>
+        <link href="https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html"/>
+        <updated>2018-02-06T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>As of today, React Navigation version 1.0 has been released! To see a list of recent improvements leading up to the release, refer to the “<a href="https://github.com/react-navigation/react-navigation/issues/2585">Renewed Path to React Navigation V1.0</a>” issue. Thank you to everybody who has filed high-quality bug reports, su...</p>]]></summary>
+        <author>
+            <name>Core Team</name>
+            <email/>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
+</feed>

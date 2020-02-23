@@ -1,0 +1,448 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Deep linking · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="In this guide we will set up our app to handle external URIs."/><meta name="docsearch:version" content="5.x"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Deep linking · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="In this guide we will set up our app to handle external URIs."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/en/versions.html"><h3>5.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/getting-started.html" target="_self">Docs</a></li><li class=""><a href="/en/help.html" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/pt-BR/deep-linking.html">Português (Brasil)</a></li><li><a href="/docs/zh-Hans/deep-linking.html">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Fundamentals<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/en/params.html">Passing parameters to routes</a></li><li class="navListItem"><a class="navItem" href="/docs/en/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/en/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/en/nesting-navigators.html">Nesting navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/en/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/en/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-containers.html">App containers</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/en/glossary-of-terms.html">Glossary of terms</a></li><li class="navListItem"><a class="navItem" href="/docs/en/compatibility.html">Compatibility layer</a></li><li class="navListItem"><a class="navItem" href="/docs/en/troubleshooting.html">Troubleshooting</a></li><li class="navListItem"><a class="navItem" href="/docs/en/limitations.html">Limitations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Guides<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/en/handling-safe-area.html">Supporting safe areas</a></li><li class="navListItem"><a class="navItem" href="/docs/en/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/en/screen-options-resolution.html">Screen options resolution</a></li><li class="navListItem"><a class="navItem" href="/docs/en/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/en/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/en/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/en/screen-tracking.html">Screen tracking for analytics</a></li><li class="navListItem"><a class="navItem" href="/docs/en/themes.html">Themes</a></li><li class="navListItem"><a class="navItem" href="/docs/en/state-persistence.html">State persistence</a></li><li class="navListItem"><a class="navItem" href="/docs/en/typescript.html">Type checking with TypeScript</a></li><li class="navListItem"><a class="navItem" href="/docs/en/redux-integration.html">Redux integration</a></li><li class="navListItem"><a class="navItem" href="/docs/en/MST-integration.html">MobX State Tree integration</a></li><li class="navListItem"><a class="navItem" href="/docs/en/localization.html">Localization</a></li><li class="navListItem"><a class="navItem" href="/docs/en/web-support.html">Web support</a></li><li class="navListItem"><a class="navItem" href="/docs/en/function-after-focusing-screen.html">Call a function when focused screen changes</a></li><li class="navListItem"><a class="navItem" href="/docs/en/react-native-screens.html">Optimize memory usage and performance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/upgrading-from-4.x.html">Upgrading from 4.x</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">API Reference<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/route-prop.html">Route prop</a></li><li class="navListItem"><a class="navItem" href="/docs/en/navigation-prop.html">Navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/en/navigation-context.html">NavigationContext</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Navigators</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/stack-navigator.html">createStackNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/en/native-stack-navigator.html">createNativeStackNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/en/drawer-navigator.html">createDrawerNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/en/bottom-tab-navigator.html">createBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/en/material-bottom-tab-navigator.html">createMaterialBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/en/material-top-tab-navigator.html">createMaterialTopTabNavigator</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Hooks</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/use-navigation.html">useNavigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/use-route.html">useRoute</a></li><li class="navListItem"><a class="navItem" href="/docs/en/use-navigation-state.html">useNavigationState</a></li><li class="navListItem"><a class="navItem" href="/docs/en/use-focus-effect.html">useFocusEffect</a></li><li class="navListItem"><a class="navItem" href="/docs/en/use-is-focused.html">useIsFocused</a></li><li class="navListItem"><a class="navItem" href="/docs/en/use-linking.html">useLinking</a></li><li class="navListItem"><a class="navItem" href="/docs/en/use-scroll-to-top.html">useScrollToTop</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Actions</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/navigation-actions.html">CommonActions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/stack-actions.html">StackActions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/drawer-actions.html">DrawerActions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/tab-actions.html">TabActions</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Build your own Navigator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/en/custom-navigators.html">Custom navigators</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Additional Resources<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/en/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Meta<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/en/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/en/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/deep-linking.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Deep linking</h1></header><article><div><span><p>In this guide we will set up our app to handle external URIs.</p>
+<h3><a class="anchor" aria-hidden="true" id="deep-link-integration"></a><a href="#deep-link-integration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deep-link integration</h3>
+<p>To handle incoming links, we need to handle 2 scenarios:</p>
+<ol>
+<li>If the app wasn't previously open, we need to set the initial state based on the link</li>
+<li>If the app was already open, we need to update the state to reflect the incoming link</li>
+</ol>
+<p>To handle a deep link, we need to translate it to a valid navigation state. The library exports a <code>getStateFromPath</code> utility to convert a URL to a state object.</p>
+<p>For example, the path <code>/rooms/chat?user=jane</code> will be translated to a state object like this:</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'rooms'</span><span class="token punctuation">,</span>
+      state<span class="token operator">:</span> <span class="token punctuation">{</span>
+        routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'chat'</span><span class="token punctuation">,</span>
+            params<span class="token operator">:</span> <span class="token punctuation">{</span> user<span class="token operator">:</span> <span class="token string">'jane'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <a href="use-linking.html"><code>useLinking</code></a> hook makes it easier to handle incoming links:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationContainer<span class="token punctuation">,</span> useLinking <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> ref <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> getInitialState <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLinking</span><span class="token punctuation">(</span>ref<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    prefixes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'https://mychat.com'</span><span class="token punctuation">,</span> <span class="token string">'mychat://'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>isReady<span class="token punctuation">,</span> setIsReady<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>initialState<span class="token punctuation">,</span> setInitialState<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  React<span class="token punctuation">.</span><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token function">getInitialState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=></span>
+        <span class="token comment">// Timeout in 150ms if `getInitialState` doesn't resolve</span>
+        <span class="token comment">// Workaround for https://github.com/facebook/react-native/issues/25675</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">)</span>
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">state</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">setInitialState</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">setIsReady</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>getInitialState<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isReady<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationContainer</span></span> <span class="token attr-name">initialState</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>initialState<span class="token punctuation">}</span></span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ref<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span><span class="token comment">/* content */</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">NavigationContainer</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>Note: The <code>getInitialState</code> function uses React Native's <code>Linking.getInitialUrl()</code> under the hood. Currently there seems to be bug (<a href="https://github.com/facebook/react-native/issues/25675">facebook/react-native#25675</a>) which results in it never resolving on Android.</p>
+</blockquote>
+<p>Often, directly translating path segments to route names may not be the expected behavior. For example, you might want to parse the path <code>/feed/latest</code> to something like:</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'Chat'</span><span class="token punctuation">,</span>
+      params<span class="token operator">:</span> <span class="token punctuation">{</span>
+        sort<span class="token operator">:</span> <span class="token string">'latest'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>You can specify a separate <code>config</code> option to control how the deep link is parsed to suit your needs.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> getInitialState <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLinking</span><span class="token punctuation">(</span>ref<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  prefixes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'https://mychat.com'</span><span class="token punctuation">,</span> <span class="token string">'mychat://'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  config<span class="token operator">:</span> <span class="token punctuation">{</span>
+    Chat<span class="token operator">:</span> <span class="token string">'feed/:sort'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Here <code>Chat</code> is the name of the screen that handles this URL. The navigator will need to have a <code>Chat</code> screen which handles a <code>sort</code> param for the route:</p>
+<p>You can also customize how params are parsed, for example, if you parse the path <code>/item/42</code> as <code>item/:id</code>, the param <code>id</code> will be parsed as string by default. But you can customize it by passing a function:</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+  Catalog<span class="token operator">:</span> <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">'item/:id'</span><span class="token punctuation">,</span>
+    parse<span class="token operator">:</span> <span class="token punctuation">{</span>
+      id<span class="token operator">:</span> Number<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>This will result in something like:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'Catalog'</span><span class="token punctuation">,</span>
+      params<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>It's important to note that the state object must match the hierarchy of nested navigators. Otherwise the state will be discarded.</p>
+<p>Sometimes we'll have the target navigator nested in other navigators which aren't part of the deep link. For example, let's say our navigation structure looks this:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">Home</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Notifications<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Notifications<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Home<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Settings<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Settings<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Here we have a stack navigator in root, and inside the <code>Home</code> screen of the root stack, we have a tab navigator with various screens. With this structure, let's say we want the path <code>/users/:id</code> to go to the <code>Profile</code> screen. We can express the nested config like so:</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+  Home<span class="token operator">:</span> <span class="token punctuation">{</span>
+    screens<span class="token operator">:</span> <span class="token punctuation">{</span>
+      Profile<span class="token operator">:</span> <span class="token string">'users/:id'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In this config, we specify that the <code>Profile</code> screen should be resolved for the <code>users/:id</code> pattern and it's nested inside the <code>Home</code> screen. Then parsing <code>users/jane</code> will result in the following state object:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+      state<span class="token operator">:</span> <span class="token punctuation">{</span>
+        routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
+            params<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token string">'jane'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Sometimes we want to ensure that a certain screen will always be present for the navigator in the state object. We can achieve it by specifying the <code>initialRouteName</code> property for that navigator in the config. For the above example, if we want the <code>Notifications</code> screen to be the initial route in <code>Home</code> tab navigator, we should specify such config (<code>Notifications</code> screen needn't be mentioned in <code>screens</code> property):</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+  Home<span class="token operator">:</span> <span class="token punctuation">{</span>
+    initialRouteName<span class="token operator">:</span> <span class="token string">'Notifications'</span><span class="token punctuation">,</span>
+    screens<span class="token operator">:</span> <span class="token punctuation">{</span>
+      Profile<span class="token operator">:</span> <span class="token string">'users/:id'</span><span class="token punctuation">,</span>
+      Notifications<span class="token operator">:</span> <span class="token string">'notify/:user'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Then, the path <code>/users/42</code> will resolve to the following state object:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+      state<span class="token operator">:</span> <span class="token punctuation">{</span>
+        index<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'Notifications'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
+            params<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token string">'jane'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Notice that we can't pass any params to the <code>Notifications</code> screen if it isn't explicitly mentioned in the URL string, so the screen should implement handling lack of these params with e.g. providing default ones.</p>
+<p>For some advanced cases, specifying the mapping may not be sufficient. You can implement your custom parser to address these cases using the <code>getStateFromPath</code> option:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> getInitialState <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLinking</span><span class="token punctuation">(</span>ref<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  prefixes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'https://mychat.com'</span><span class="token punctuation">,</span> <span class="token string">'mychat://'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  config<span class="token operator">:</span> <span class="token punctuation">{</span>
+    Chat<span class="token operator">:</span> <span class="token string">'feed/:sort'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">getStateFromPath</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">path<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Implement your custom parser and return the navigation state here</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="set-up-with-expo-projects"></a><a href="#set-up-with-expo-projects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set up with Expo projects</h2>
+<p>First, you will want to specify a URL scheme for your app. This corresponds to the string before <code>://</code> in a URL, so if your scheme is <code>mychat</code> then a link to your app would be <code>mychat://</code>. The scheme only applies to standalone apps and you need to re-build the standalone app for the change to take effect. In the Expo client app you can deep link using <code>exp://ADDRESS:PORT</code> where <code>ADDRESS</code> is often <code>127.0.0.1</code> and <code>PORT</code> is often <code>19000</code> - the URL is printed when you run <code>expo start</code>. If you want to test with your custom scheme you will need to run <code>expo build:ios -t simulator</code> or <code>expo build:android</code> and install the resulting binaries in your emulators. You can register for a scheme in your <code>app.json</code> by adding a string under the scheme key:</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"expo"</span>: {
+    <span class="hljs-attr">"scheme"</span>: <span class="hljs-string">"mychat"</span>
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="uri-prefix"></a><a href="#uri-prefix" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URI Prefix</h3>
+<p>Next, let's configure our navigation container to extract the path from the app's incoming URI.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Linking <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'expo'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> prefix <span class="token operator">=</span> Linking<span class="token punctuation">.</span><span class="token function">makeUrl</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> ref <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> getInitialState <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLinking</span><span class="token punctuation">(</span>ref<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    prefixes<span class="token operator">:</span> <span class="token punctuation">[</span>prefix<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>isReady<span class="token punctuation">,</span> setIsReady<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>initialState<span class="token punctuation">,</span> setInitialState<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  React<span class="token punctuation">.</span><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">getInitialState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">state</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">setInitialState</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">setIsReady</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>getInitialState<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isReady<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationContainer</span></span> <span class="token attr-name">initialState</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>initialState<span class="token punctuation">}</span></span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ref<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span><span class="token comment">/* content */</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">NavigationContainer</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The reason that is necessary to use <code>Expo.Linking.makeUrl</code> is that the scheme will differ depending on whether you're in the client app or in a standalone app.</p>
+<h3><a class="anchor" aria-hidden="true" id="test-deep-linking-on-ios"></a><a href="#test-deep-linking-on-ios" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test deep linking on iOS</h3>
+<p>To test the URI on the simulator in the Expo client app, run the following:</p>
+<pre><code class="hljs css language-sh">xcrun simctl openurl booted [ put your URI prefix <span class="hljs-keyword">in</span> here ]
+
+<span class="hljs-comment"># for example</span>
+
+xcrun simctl openurl booted exp://127.0.0.1:19000/--/chat/jane
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="test-deep-linking-on-android"></a><a href="#test-deep-linking-on-android" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test deep linking on Android</h3>
+<p>To test the intent handling in the Expo client app on Android, run the following:</p>
+<pre><code class="hljs css language-sh">adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"[ put your URI prefix in here ]"</span> host.exp.exponent
+
+<span class="hljs-comment"># for example</span>
+
+adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"exp://127.0.0.1:19000/--/chat/jane"</span> host.exp.exponent
+</code></pre>
+<p>Change <code>host.exp.exponent</code> to your app package name if you are testig on a standalone app.</p>
+<p>Read the <a href="https://docs.expo.io/versions/latest/guides/linking.html">Expo linking guide</a> for more information about how to configure linking in projects built with Expo.</p>
+<h2><a class="anchor" aria-hidden="true" id="set-up-with-react-native-init-projects"></a><a href="#set-up-with-react-native-init-projects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set up with <code>react-native init</code> projects</h2>
+<h3><a class="anchor" aria-hidden="true" id="ios"></a><a href="#ios" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>iOS</h3>
+<p>Let's configure the native iOS app to open based on the <code>mychat://</code> URI scheme.</p>
+<p>You'll need to link <code>RCTLinking</code> to your project by following the steps described here. To be able to listen to incoming app links, you'll need to add the following lines to <code>SimpleApp/ios/SimpleApp/AppDelegate.m</code>.</p>
+<p>If you're targeting iOS 9.x or newer:</p>
+<pre><code class="hljs css language-objc"><span class="hljs-comment">// Add the header at the top of the file:</span>
+<span class="hljs-meta">#import <span class="hljs-meta-string">&lt;React/RCTLinkingManager.h&gt;</span></span>
+
+<span class="hljs-comment">// Add this above `@end`:</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application
+   openURL:(<span class="hljs-built_in">NSURL</span> *)url
+   options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>,<span class="hljs-keyword">id</span>&gt; *)options
+{
+  <span class="hljs-keyword">return</span> [RCTLinkingManager application:application openURL:url options:options];
+}
+</code></pre>
+<p>If you're targeting iOS 8.x or older, you can use the following code instead:</p>
+<pre><code class="hljs css language-objc"><span class="hljs-comment">// Add the header at the top of the file:</span>
+<span class="hljs-meta">#import <span class="hljs-meta-string">&lt;React/RCTLinkingManager.h&gt;</span></span>
+
+<span class="hljs-comment">// Add this above `@end`:</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application openURL:(<span class="hljs-built_in">NSURL</span> *)url
+  sourceApplication:(<span class="hljs-built_in">NSString</span> *)sourceApplication annotation:(<span class="hljs-keyword">id</span>)annotation
+{
+  <span class="hljs-keyword">return</span> [RCTLinkingManager application:application openURL:url
+                      sourceApplication:sourceApplication annotation:annotation];
+}
+</code></pre>
+<p>If your app is using Universal Links, you'll need to add the following code as well:</p>
+<pre><code class="hljs css language-objc"><span class="hljs-comment">// Add this above `@end`:</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application continueUserActivity:(<span class="hljs-keyword">nonnull</span> <span class="hljs-built_in">NSUserActivity</span> *)userActivity
+ restorationHandler:(<span class="hljs-keyword">nonnull</span> <span class="hljs-keyword">void</span> (^)(<span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-keyword">id</span>&lt;<span class="hljs-built_in">UIUserActivityRestoring</span>&gt;&gt; * _Nullable))restorationHandler
+{
+ <span class="hljs-keyword">return</span> [RCTLinkingManager application:application
+                  continueUserActivity:userActivity
+                    restorationHandler:restorationHandler];
+}
+</code></pre>
+<p>In Xcode, open the project at <code>SimpleApp/ios/SimpleApp.xcodeproj</code>. Select the project in sidebar and navigate to the info tab. Scroll down to &quot;URL Types&quot; and add one. In the new URL type, set the identifier and the URL scheme to your desired URL scheme.</p>
+<p><img src="/docs/assets/deep-linking/xcode-linking.png" alt="Xcode project info URL types with mychat added"></p>
+<p>Now you can press play in Xcode, or re-build on the command line:</p>
+<pre><code class="hljs css language-sh">react-native run-ios
+</code></pre>
+<p>To test the URI on the simulator, run the following:</p>
+<pre><code class="hljs css language-sh">xcrun simctl openurl booted mychat://chat/jane
+</code></pre>
+<p>To test the URI on a real device, open Safari and type <code>mychat://chat/jane</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="android"></a><a href="#android" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Android</h3>
+<p>To configure the external linking in Android, you can create a new intent in the manifest.</p>
+<p>In <code>SimpleApp/android/app/src/main/AndroidManifest.xml</code>, do these following adjustments:</p>
+<ol>
+<li>Set <code>launchMode</code> of <code>MainActivity</code> to <code>singleTask</code> in order to receive intent on existing <code>MainActivity</code>. It is useful if you want to perform navigation using deep link you have been registered - <a href="http://developer.android.com/training/app-indexing/deep-linking.html#adding-filters">details</a></li>
+<li>Add the new <code>intent-filter</code> inside the <code>MainActivity</code> entry with a <code>VIEW</code> type action:</li>
+</ol>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">activity</span>
+    <span class="hljs-attr">android:name</span>=<span class="hljs-string">".MainActivity"</span>
+    <span class="hljs-attr">android:launchMode</span>=<span class="hljs-string">"singleTask"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.MAIN"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.LAUNCHER"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.VIEW"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.DEFAULT"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.BROWSABLE"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">android:scheme</span>=<span class="hljs-string">"mychat"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span>
+</code></pre>
+<p>Now, re-install the app:</p>
+<pre><code class="hljs css language-sh">react-native run-android
+</code></pre>
+<p>To test the intent handling in Android, run the following:</p>
+<pre><code class="hljs css language-sh">adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"mychat://chat/jane"</span> com.simpleapp
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="hybrid-ios-applications-skip-for-rn-only-projects"></a><a href="#hybrid-ios-applications-skip-for-rn-only-projects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hybrid iOS Applications (Skip for RN only projects)</h2>
+<p>If you're using React Navigation within a hybrid app - an iOS app that has both Swift/ObjC and React Native parts - you may be missing the <code>RCTLinkingIOS</code> subspec in your Podfile, which is installed by default in new RN projects. To add this, ensure your Podfile looks like the following:</p>
+<pre><code class="hljs css language-pod"> pod <span class="hljs-string">'React'</span>, :<span class="hljs-function"><span class="hljs-params">path</span> =&gt;</span> <span class="hljs-string">'../node_modules/react-native'</span>, :<span class="hljs-function"><span class="hljs-params">subspecs</span> =&gt;</span> [
+    . . . <span class="hljs-comment">// other subspecs</span>
+    <span class="hljs-string">'RCTLinkingIOS'</span>,
+    . . .
+  ]
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/navigating-without-navigation-prop.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/en/screen-tracking.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#set-up-with-expo-projects">Set up with Expo projects</a><ul class="toc-headings"><li><a href="#uri-prefix">URI Prefix</a></li><li><a href="#test-deep-linking-on-ios">Test deep linking on iOS</a></li><li><a href="#test-deep-linking-on-android">Test deep linking on Android</a></li></ul></li><li><a href="#set-up-with-react-native-init-projects">Set up with <code>react-native init</code> projects</a><ul class="toc-headings"><li><a href="#ios">iOS</a></li><li><a href="#android">Android</a></li></ul></li><li><a href="#hybrid-ios-applications-skip-for-rn-only-projects">Hybrid iOS Applications (Skip for RN only projects)</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Configuring the header bar · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Até agora você provavelmente está cansado de ver uma barra cinza em branco na parte superior da tela &amp;mdash; você está pronto para algum [flair](https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg). Então, vamos entrar na configuração da barra de cabeçalho."/><meta name="docsearch:version" content="1.x"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="Configuring the header bar · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="Até agora você provavelmente está cansado de ver uma barra cinza em branco na parte superior da tela &amp;mdash; você está pronto para algum [flair](https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg). Então, vamos entrar na configuração da barra de cabeçalho."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/pt-BR"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/pt-BR/versions.html"><h3>1.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/pt-BR/1.x/getting-started.html" target="_self">Docs</a></li><li class=""><a href="/pt-BR/help.html" target="_self">Ajuda</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Português (Brasil)</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/1.x/headers.html">English</a></li><li><a href="/docs/zh-Hans/1.x/headers.html">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Fundamentos</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Fundamentos<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/params.html">Passing parameters to routes</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/pt-BR/1.x/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/glossary-of-terms.html">Glossary of terms</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Como eu faço...?<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/handling-iphonex.html">iPhone X support</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/screen-tracking.html">Screen tracking</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/redux-integration.html">Redux integration</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Construa seu próprio navegador<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/custom-navigator-overview.html">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/routers.html">Routers</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/custom-navigators.html">Custom navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/navigation-views.html">Navigation views</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/transitioner.html">Transitioner</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Meta<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/1.x/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/headers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Configuring the header bar</h1></header><article><div><span><p>Até agora você provavelmente está cansado de ver uma barra cinza em branco na parte superior da tela — você está pronto para algum <a href="https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg">flair</a>. Então, vamos entrar na configuração da barra de cabeçalho.</p>
+<h2><a class="anchor" aria-hidden="true" id="configurando-o-título-do-cabeçalho"></a><a href="#configurando-o-título-do-cabeçalho" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configurando o título do cabeçalho</h2>
+<p>Um componente de tela pode ter uma propriedade estática chamada <code>navigationOptions</code>, que é um objeto ou uma função que retorna um objeto que contém várias opções de configuração. O que usamos para o título do cabeçalho é <code>title</code>, como demonstrado no exemplo a seguir.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Details'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/setting-header-title" target="blank" class="run-code-button">→ Executar esse código</a></p>
+<blockquote>
+<p><code>StackNavigator</code> uses platform conventions by default, so on iOS the title will be centered and on Android it will be left-aligned.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="usando-params-no-título"></a><a href="#usando-params-no-título" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usando params no título</h2>
+<p>Para usar params no título, precisamos tornar <code>navigationOptions</code> uma função que retorna um objeto de configuração. Pode ser tentador tentar usar <code>this.props</code> dentro de <code>navigationOptions</code>, mas porque é uma propriedade estática do componente, <code>isso</code> não consulte uma instância do componente e, portanto, nenhum objeto está disponível. Ao invés disso, se nós fizermos <code>navigationOptions</code> uma função, então o React Navigation irá chamá-la com um objeto contendo <code>{ navigation, navigationOptions, screenProps }</code> - nesse caso, tudo o que nos interessa é <code>navigation</code>, que é o mesmo objeto que é passado para sua tela como <code>this.props.navigation</code>. You may recall that we can get the params from <code>navigation</code> through <code>navigation.state.params</code>, and so we do this below to extract a param and use it as a title.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> params <span class="token punctuation">}</span> <span class="token operator">=</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> params <span class="token operator">?</span> params<span class="token punctuation">.</span>otherParam <span class="token operator">:</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/using-params-in-title" target="blank" class="run-code-button">→ Executar esse código</a></p>
+<p>O argumento que é passado para a função <code>navigationOptions</code> é um objeto com as seguintes propriedades:</p>
+<ul>
+<li><code>navigation</code> - O <a href="navigation-prop.html">navigation prop</a> para a tela, com a rota da tela em <code>navigation.state</code>.</li>
+<li><code>screenProps</code> - Os suportes que passam acima do componente do navegador</li>
+<li><code>navigationOptions</code> - As opções padrão ou anterior que seriam usadas se novos valores não fossem fornecidos</li>
+</ul>
+<p>Nós só precisamos do prop <code>navigation</code> no exemplo acima, mas você pode, em alguns casos, querer usar <code>screenProps</code> ou <code>navigationOptions</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="atualizando-navigationoptions-com-setparams"></a><a href="#atualizando-navigationoptions-com-setparams" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Atualizando <code>navigationOptions</code> com <code>setParams</code></h2>
+<p>Geralmente, é necessário atualizar a configuração <code>navigationOptions</code> da tela ativa a partir do próprio componente de tela montado. Nós podemos fazer isso usando <code>this.props.navigation.setParams</code></p>
+<pre><code class="hljs css language-js">  <span class="token comment">/* Inside of render() */</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
+    <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Update the title<span class="token punctuation">"</span></span>
+    <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">setParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span>otherParam<span class="token operator">:</span> <span class="token string">'Updated!'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+  <span class="token punctuation">/></span></span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/updating-navigationoptions-with-setparams" target="blank" class="run-code-button">→ Executar esse código</a></p>
+<h2><a class="anchor" aria-hidden="true" id="ajustar-os-estilos-de-cabeçalho"></a><a href="#ajustar-os-estilos-de-cabeçalho" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ajustar os estilos de cabeçalho</h2>
+<p>Existem três propriedades chaves para usar ao personalizar o estilo do seu cabeçalho: <code>headerStyle</code>, <code>headerTintColor</code> e <code>headerTitleStyle</code>.</p>
+<ul>
+<li><code>headerStyle</code>: um objeto de estilo que será aplicado ao <code>View</code> que envolve o cabeçalho. Se você definir <code>backgroundColor</code> nele, essa será a cor do seu cabeçalho.</li>
+<li><code>headerTintColor</code>: o botão Voltar e o título usam essa propriedade como sua cor. No exemplo abaixo, definimos a cor do tom para branco (<code>#fff</code>) para que o botão Voltar e o título do cabeçalho sejam brancos.</li>
+<li><code>headerTitleStyle</code>: se quisermos personalizar o <code>fontFamily</code>, <code>fontWeight</code> e outro, podemos usar o <code>Text</code> e suas propriedades de estilo para isso.</li>
+</ul>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+      backgroundColor<span class="token operator">:</span> <span class="token string">'#f4511e'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    headerTintColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
+    headerTitleStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+      fontWeight<span class="token operator">:</span> <span class="token string">'bold'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/setting-header-styles" target="blank" class="run-code-button">→ Executar esse código</a></p>
+<p>Há algumas coisas para notar aqui: 1. On iOS the status bar text and icons are black, and this doesn't look great over a dark colored background. Não discutiremos isso aqui, mas você deve configurar a barra de status para se adequar às cores da tela <a href="status-bar.html">conforme descrito no guia da barra de status</a>. 2. A configuração que definimos só se aplica à tela inicial; Quando navegamos para a tela de detalhes, os estilos padrão estão de volta. Veremos como compartilhar <code>navigationOptions</code> entre as telas agora.</p>
+<h2><a class="anchor" aria-hidden="true" id="compartilhando-navigationoptions-comuns-em-telas"></a><a href="#compartilhando-navigationoptions-comuns-em-telas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Compartilhando <code>navigationOptions</code> comuns em telas</h2>
+<p>É comum querer configurar o cabeçalho de maneira semelhante em várias telas. Por exemplo, a cor da marca da sua empresa pode ser vermelha e, portanto, você deseja que a cor do plano de fundo do cabeçalho seja vermelha e que a cor do tom seja branca. Conveniently, these are the colors we're using our running example, and you'll notice that when you navigate to the <code>DetailsScreen</code> the colors go back to the defaults. Não seria horrível se tivéssemos que copiar as propriedades de estilo de cabeçalho <code>navigationOptions</code> de <code>HomeScreen</code> para <code>DetailsScreen</code>, e para cada componente de tela único que usamos em nosso aplicativo? Felizmente, não temos. We can instead move the configuration up to the <code>StackNavigator</code>.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    <span class="token comment">/* No more header config here! */</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* other code... */</span>
+
+<span class="token keyword">const</span> RootStack <span class="token operator">=</span> <span class="token function">StackNavigator</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    Home<span class="token operator">:</span> <span class="token punctuation">{</span>
+      screen<span class="token operator">:</span> HomeScreen<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    Details<span class="token operator">:</span> <span class="token punctuation">{</span>
+      screen<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    initialRouteName<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    <span class="token comment">/* The header config from HomeScreen is now here */</span>
+    navigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        backgroundColor<span class="token operator">:</span> <span class="token string">'#f4511e'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      headerTintColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
+      headerTitleStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fontWeight<span class="token operator">:</span> <span class="token string">'bold'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/sharing-header-styles" target="blank" class="run-code-button">→ Executar esse código</a></p>
+<p>Agora, qualquer tela que pertença ao <code>RootStack</code> terá nossos maravilhosos estilos de marca. Certamente, deve haver uma maneira de substituir essas opções, se precisarmos?</p>
+<h2><a class="anchor" aria-hidden="true" id="substituindo-navigationoptions-compartilhados"></a><a href="#substituindo-navigationoptions-compartilhados" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substituindo <code>navigationOptions</code> compartilhados</h2>
+<p>The <code>navigationOptions</code> specified on your screen component are merged together with those of its parent <code>StackNavigator</code>, with the options on the screen component taking precedence. Let's use this knowledge to invert the background and tint colors on the details screen.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation<span class="token punctuation">,</span> navigationOptions <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> params <span class="token punctuation">}</span> <span class="token operator">=</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> params <span class="token operator">?</span> params<span class="token punctuation">.</span>otherParam <span class="token operator">:</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">,</span>
+      <span class="token comment">/* These values are used instead of the shared configuration! */</span>
+      headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        backgroundColor<span class="token operator">:</span> navigationOptions<span class="token punctuation">.</span>headerTintColor<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      headerTintColor<span class="token operator">:</span> navigationOptions<span class="token punctuation">.</span>headerStyle<span class="token punctuation">.</span>backgroundColor<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/overriding-shared-header-styles" target="blank" class="run-code-button">→ Executar esse código</a></p>
+<h2><a class="anchor" aria-hidden="true" id="substituindo-o-título-por-um-componente-personalizado"></a><a href="#substituindo-o-título-por-um-componente-personalizado" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substituindo o título por um componente personalizado</h2>
+<p>Sometimes you need more control than just changing the text and styles of your title -- for example, you may want to render an image in place of the title, or make the title into a button. In these cases you can completely override the component used for the title and provide your own.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">LogoTitle</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Image</span></span>
+        <span class="token attr-name">source</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./spiro.png'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> width<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> height<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">/></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// headerTitle instead of title</span>
+    headerTitle<span class="token operator">:</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">LogoTitle</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/custom-header-title-component" target="blank" class="run-code-button">→ Executar esse código</a></p>
+<blockquote>
+<p>You might be wondering, why <code>headerTitle</code> when we provide a component and not <code>title</code>, like before? The reason is that <code>headerTitle</code> is a property that is specific to a <code>StackNavigator</code>, the <code>headerTitle</code> defaults to a <code>Text</code> component that displays the <code>title</code>.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="configuração-adicional"></a><a href="#configuração-adicional" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuração adicional</h2>
+<p>You can read the full list of available screen <code>navigationOptions</code> for screens inside of <code>StackNavigator</code> in the <a href="stack-navigator.html#navigationoptions-used-by-stacknavigator">StackNavigator reference</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="sumário"></a><a href="#sumário" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sumário</h2>
+<ul>
+<li>Você pode personalizar o cabeçalho dentro da propriedade estática <code>navigationOptions</code> nos componentes da tela. Leia a lista completa de opções <a href="stack-navigator.html#navigationoptions-used-by-stacknavigator">na referência da API</a>.</li>
+<li>A propriedade estática <code>navigationOptions</code> pode ser um objeto ou uma função. Quando é uma função, é fornecida com um objeto com o prop <code>navigation</code>, <code>screenProps</code> e <code>navigationOptions</code> nele.</li>
+<li>You can also specify shared <code>navigationOptions</code> in the <code>StackNavigator</code> configuration when you initialize it. The static property takes precedence over that configuration.</li>
+<li><a href="https://snack.expo.io/@react-navigation/custom-header-title-component">Full source of what we have built so far</a>.</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/1.x/params.html"><span class="arrow-prev">← </span><span>Anterior</span></a><a class="docs-next button" href="/docs/pt-BR/1.x/header-buttons.html"><span>Próximo</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#configurando-o-título-do-cabeçalho">Configurando o título do cabeçalho</a></li><li><a href="#usando-params-no-título">Usando params no título</a></li><li><a href="#atualizando-navigationoptions-com-setparams">Atualizando <code>navigationOptions</code> com <code>setParams</code></a></li><li><a href="#ajustar-os-estilos-de-cabeçalho">Ajustar os estilos de cabeçalho</a></li><li><a href="#compartilhando-navigationoptions-comuns-em-telas">Compartilhando <code>navigationOptions</code> comuns em telas</a></li><li><a href="#substituindo-navigationoptions-compartilhados">Substituindo <code>navigationOptions</code> compartilhados</a></li><li><a href="#substituindo-o-título-por-um-componente-personalizado">Substituindo o título por um componente personalizado</a></li><li><a href="#configuração-adicional">Configuração adicional</a></li><li><a href="#sumário">Sumário</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

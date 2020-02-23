@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Navigation options resolution · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="每个屏幕都可以配置有关如何在父导航中显示的各个方面。 在基础知识文档的[配置标题栏](headers.html)部分，我们将介绍它的工作原理。"/><meta name="docsearch:version" content="5.x"/><meta name="docsearch:language" content="zh-Hans"/><meta property="og:title" content="Navigation options resolution · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="每个屏幕都可以配置有关如何在父导航中显示的各个方面。 在基础知识文档的[配置标题栏](headers.html)部分，我们将介绍它的工作原理。"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-Hans"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/zh-Hans/versions.html"><h3>5.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/zh-Hans/getting-started.html" target="_self">文档</a></li><li class=""><a href="/zh-Hans/help.html" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/navigation-options-resolution.html">English</a></li><li><a href="/docs/pt-BR/navigation-options-resolution.html">Português (Brasil)</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/navigation-options-resolution.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Navigation options resolution</h1></header><article><div><span><p>每个屏幕都可以配置有关如何在父导航中显示的各个方面。 在基础知识文档的<a href="headers.html">配置标题栏</a>部分，我们将介绍它的工作原理。</p>
+<p>在本文档中，我们将解释当有多个导航器时这是如何工作的。 了解这一点非常重要，以便您将<code>navigationOptions</code>放在正确的位置，并且可以正确配置导航器。 如果你把它们放在错误的地方，最好的情况是什么都不会发生，最坏的情况是会出现混乱和意想不到的情况。 幸运的是，这里面的逻辑不难理解：</p>
+<p><strong>你只能从其中一个屏幕组件修改导航器的导航选项， 这同样适用于嵌套为页面的导航器。</strong></p>
+<p>我们用每个 tab 都有一个 stack 的 tab navigator 举例， 看看如果我们在 stack 的 某一个页面中设置 <code>navigationOptions</code> 将会发生什么？</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// etc..</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    tabBarLabel<span class="token operator">:</span> <span class="token string">'Settings!'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// etc..</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> SettingsStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">B</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createAppContainer</span><span class="token punctuation">(</span>
+  <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    HomeStack<span class="token punctuation">,</span>
+    SettingsStack<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-wrong-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p>正如我们前面提到的，你只能从其中一个屏幕组件修改导航器的导航选项。 上面的<code>A</code>和<code>B</code>分别是&lt;HomeStack </code>和<code>Settings Stack</code>中的屏幕组件，不在 tab navigator 中。 因此，结果将是<code>tabBarLabel</code>属性不应用于 tab navigator。 我们可以解决这个问题！</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> SettingsStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">B</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+HomeStack<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+SettingsStack<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  tabBarLabel<span class="token operator">:</span> <span class="token string">'Settings!'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createAppContainer</span><span class="token punctuation">(</span>
+  <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    HomeStack<span class="token punctuation">,</span>
+    SettingsStack<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-correct-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p>为了理解这里发生了什么，首先回顾一下，在下面的例子中，<code>MyComponent</code>和<code>MyOtherComponent</code>是相同的：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token comment">// etc.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyOtherComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token comment">// etc.</span>
+<span class="token punctuation">}</span>
+
+MyOtherComponent<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>我们也知道，<code>createStackNavigator</code>和相关函数会返回 React 组件。 因此，当我们直接在<code>HomeStack</code>和<code>SettingsStack</code>组件上设置<code>navigationOptions</code>，且他们被用作屏幕组件时，允许我们控制其父导航器的<code>navigationOptions</code> 。 在这种情况下，我们堆栈组件上的<code>navigationOptions</code>配置 tab navigator 中用于渲染堆栈的标签。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment">// This is the default for screens in the stack, so `A` will</span>
+    <span class="token comment">// use this title unless it overrides it</span>
+    defaultNavigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'Welcome'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// These are the options that are used by the navigator that renders</span>
+<span class="token comment">// the HomeStack, in our example above this is a tab navigator.</span>
+HomeStack<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>你可以这样写：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment">// This applies to the parent navigator</span>
+    navigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// This applies to child routes</span>
+    defaultNavigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'Welcome'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-title-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<h1><a class="anchor" aria-hidden="true" id="getactivechildnavigationoptions"></a><a href="#getactivechildnavigationoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getActiveChildNavigationOptions</h1>
+<p>如果您想从导航器的活动子级获取<code>navigationOptions</code>，则可以使用<code>getActiveChildNavigationOptions</code>来实现。 例如，这使你可以直接在选项卡内部的堆栈内部的屏幕上设置<code>tabBarLabel</code>。</p>
+<pre><code class="hljs css language-jsx"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Welcome'</span><span class="token punctuation">,</span>
+    tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Placeholder</span></span> <span class="token attr-name">text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>A!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token function-variable function">navigationOptions</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation<span class="token punctuation">,</span> screenProps <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment">// you can put fallback values before here, eg: a default tabBarLabel</span>
+      <span class="token operator">...</span><span class="token function">getActiveChildNavigationOptions</span><span class="token punctuation">(</span>navigation<span class="token punctuation">,</span> screenProps<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token comment">// put other navigationOptions that you don't want the active child to</span>
+      <span class="token comment">// be able to override here!</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-active-child-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<h1><a class="anchor" aria-hidden="true" id="注意-navigationoptions-属性-vs-navigator-配置"></a><a href="#注意-navigationoptions-属性-vs-navigator-配置" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>注意</strong>: navigationOptions 属性 vs navigator 配置</h1>
+<p>导航器使用<code>create*Navigator(routeConfig, navigatorConfig)</code>进行初始化。 在<code>navigatorConfig</code>内部，我们可以添加一个 <code>defaultNavigationOptions</code> 属性。 这些<code>defaultNavigationOptions</code>是该导航器中屏幕的默认选项（<a href="headers.html#sharing-common-navigationoptions-across-screens">详细了解共享常见导航选项</a>） ，它们不会引用该导航器的<code>navigationOptions</code>— 正如我们上面所见，我们直接在导航器上为该用例设置了<code>navigationOptions</code>属性。</p>
+<h1><a class="anchor" aria-hidden="true" id="堆栈包含一个选项卡导航器，并且您想要在堆栈标题栏上设置标题"></a><a href="#堆栈包含一个选项卡导航器，并且您想要在堆栈标题栏上设置标题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>堆栈包含一个选项卡导航器，并且您想要在堆栈标题栏上设置标题</h1>
+<p>想象一下以下配置：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Feed<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Home<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
+  Settings<span class="token operator">:</span> SettingsScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果我们在<code>FeedScreen</code>上用<code>navigationOptions</code>设置<code>headerTitle</code>，那么这是行不通的。 这是因为<code>AppNavigator</code>堆栈只会查看其直接子级进行配置：<code>TabNavigator</code>和<code>SettingsScreen</code>。 因此，我们可以通过在<code>TabNavigator</code>上设置<code>headerTitle</code>来代替，如下所示：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Feed<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+TabNavigator<span class="token punctuation">.</span><span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> routeName <span class="token punctuation">}</span> <span class="token operator">=</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>routes<span class="token punctuation">[</span>navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// You can do whatever you like here to pick the title based on the route name</span>
+  <span class="token keyword">const</span> headerTitle <span class="token operator">=</span> routeName<span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    headerTitle<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>另一个选项是重新组织你的 navigators，每个tab 都有自己的 stack， 当 tab 页面处于顶层时，你可以隐藏 stack 的 header。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  <span class="token comment">/* other routes here */</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> ProfileStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  ProfileHome<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
+  <span class="token comment">/* other routes here */</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileStack<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+TabNavigator<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Hide the header from AppNavigator stack</span>
+  headerShown<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Home<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
+  Settings<span class="token operator">:</span> SettingsScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>使用此配置时，<code>FeedScreen</code>和<code>ProfileScreen</code>中<code>navigationOptions</code>的<code>headerTitle</code>或<code>title</code> 不确定标题中的标题。</p>
+<p>此外，你可以将新页面推送到 FeedStack 和 ProfileScreen，而无需通过向这些堆栈添加更多路由来隐藏选项卡栏。 如果您想将选项卡上的屏幕推送到标签栏上，则可以将它们添加到<code>AppNavigator</code>堆栈。</p>
+<h1><a class="anchor" aria-hidden="true" id="tab-navigator-包含-stack-navigator，你希望隐藏特定页面上的-tabbar"></a><a href="#tab-navigator-包含-stack-navigator，你希望隐藏特定页面上的-tabbar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tab navigator 包含 stack navigator，你希望隐藏特定页面上的 tabbar</h1>
+<p>与上面的示例类似，堆栈中包含 Tab Navigator，我们可以通过两种方式解决此问题：将<code>navigationOptions</code>添加到我们的 Tab Navigator，将 Tab Bar 设置为隐藏，具体取决于子项中哪个路由处于活动状态，或者我们可以移动堆栈内的 Tab Navigator。</p>
+<p>想象一下以下配置：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>当我们从 Feed 主页面跳转到 Details 页面时，如果想要隐藏 Tab Bar，我们无法在 <code>DetailsScreen</code>的<code>navigationOptions</code>中配置 <code>tabBarVisible: false</code>，因为这些选项只能在<code>FeedStack</code>中应用。 但是，我们可以执行以下操作：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+FeedStack<span class="token punctuation">.</span><span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> tabBarVisible <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>index <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    tabBarVisible <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    tabBarVisible<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>只要我们离开 Feed 主页面，Tab Bar 就会被隐藏。 我们可以根据路由名称切换 Tab bar 的可见性, 但是在路由跳转时，反复切换 Tab Bar 的可见性，会看起来很奇怪。我们应该只设置原本 Tab Bar 就是可见的页面。</p>
+<p>另一种做法是添加另一个 Stack Navigator 作为 Tab Navigator 的父级, 并将 Detail 页面放在里面。 官方建议这样做。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  <span class="token comment">/* any other route you want to render under the tab bar */</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Tabs<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
+  <span class="token comment">/* any other route you want to render above the tab bar */</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> HomeStack<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="drawer-navigator-里面有一个-stack-navigator-你想在某些屏幕上锁定-drawer"></a><a href="#drawer-navigator-里面有一个-stack-navigator-你想在某些屏幕上锁定-drawer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Drawer Navigator 里面有一个 Stack Navigator, 你想在某些屏幕上锁定 Drawer</h1>
+<p>这与上面的Tab Navigator 中有一个 Stack Navigator 时，隐藏 Tab Bar 的原理基本相同。 唯一不同的就是这里使用<code>drawerLockMode</code>，而上面使用<code>tabBarVisible</code>。</p>
+<p>想象一下以下配置：</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> DrawerNavigator <span class="token operator">=</span> <span class="token function">createDrawerNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> DrawerNavigator<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>为了在将 Detail 页面推入 Feed Stack 时隐藏 Drawer，我们需要在<code>FeedStack</code>中设置<code>navigationOptions</code>。 如果要在 <code>DetailsScreen</code>上设置 <code>navigationOptions</code>，则需要配置 FeedStack (Detail 页面的父级)，而不是 Drawer。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+FeedStack<span class="token punctuation">.</span><span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> drawerLockMode <span class="token operator">=</span> <span class="token string">'unlocked'</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>index <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    drawerLockMode <span class="token operator">=</span> <span class="token string">'locked-closed'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    drawerLockMode<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>另一种做法是添加另一个 Stack Navigator 作为 Drawer Navigator 的父级, 并将 Detail 页面放在里面。 官方建议这样做。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  <span class="token comment">/* any other route where you want the drawer to remain available */</span>
+  <span class="token comment">/* keep in mind that it will conflict with the swipe back gesture on ios */</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> DrawerNavigator <span class="token operator">=</span> <span class="token function">createDrawerNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Drawer<span class="token operator">:</span> DrawerNavigator<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
+  <span class="token comment">/* add routes here where you want the drawer to be locked */</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> HomeStack<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

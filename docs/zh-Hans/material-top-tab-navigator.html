@@ -1,0 +1,500 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>createMaterialTopTabNavigator · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;div style=&quot;display: flex; justify-content: center&quot;&gt;"/><meta name="docsearch:version" content="5.x"/><meta name="docsearch:language" content="zh-Hans"/><meta property="og:title" content="createMaterialTopTabNavigator · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="&lt;div style=&quot;display: flex; justify-content: center&quot;&gt;"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-Hans"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/zh-Hans/versions.html"><h3>5.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-Hans/getting-started.html" target="_self">文档</a></li><li class=""><a href="/zh-Hans/help.html" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/material-top-tab-navigator.html">English</a></li><li><a href="/docs/pt-BR/material-top-tab-navigator.html">Português (Brasil)</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Navigators</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">基础<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/params.html">Passing parameters to routes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/nesting-navigators.html">Nesting navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/app-containers.html">App containers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/glossary-of-terms.html">Glossary of terms</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/compatibility.html">Compatibility layer</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/troubleshooting.html">Troubleshooting</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/limitations.html">Limitations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">指南<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/handling-safe-area.html">Supporting safe areas</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/screen-options-resolution.html">Screen options resolution</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/screen-tracking.html">Screen tracking for analytics</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/themes.html">Themes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/state-persistence.html">State persistence</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/typescript.html">Type checking with TypeScript</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/redux-integration.html">Redux integration</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/MST-integration.html">MobX State Tree integration</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/localization.html">Localization</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/web-support.html">Web support</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/function-after-focusing-screen.html">Call a function when focused screen changes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/react-native-screens.html">Optimize memory usage and performance</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/upgrading-from-4.x.html">Upgrading from 4.x</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">阅读 API 参考<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/route-prop.html">Route prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-prop.html">Navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-context.html">NavigationContext</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Navigators</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/stack-navigator.html">createStackNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/native-stack-navigator.html">createNativeStackNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/drawer-navigator.html">createDrawerNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/bottom-tab-navigator.html">createBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/material-bottom-tab-navigator.html">createMaterialBottomTabNavigator</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-Hans/material-top-tab-navigator.html">createMaterialTopTabNavigator</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Hooks</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/use-navigation.html">useNavigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/use-route.html">useRoute</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/use-navigation-state.html">useNavigationState</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/use-focus-effect.html">useFocusEffect</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/use-is-focused.html">useIsFocused</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/use-linking.html">useLinking</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/use-scroll-to-top.html">useScrollToTop</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Actions</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-actions.html">CommonActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/stack-actions.html">StackActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/drawer-actions.html">DrawerActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/tab-actions.html">TabActions</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">构建自己的导航<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/custom-navigators.html">Custom navigators</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">附加资源<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">其他<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/material-top-tab-navigator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">createMaterialTopTabNavigator</h1></header><article><div><span><div style="display: flex; justify-content: center">
+  <video width="60%" playsinline autoplay muted loop>
+    <source src="/docs/assets/navigators/tabs/material-top-tabs.mov">
+  <video>
+</div>
+<p>屏幕顶部的材料设计主题标签栏, 可通过点击路线或水平滑动来切换不同的路由。 默认情况下, 转换是动态的。 每个路由的屏幕组件将立即安装。</p>
+<p>This wraps <a href="https://github.com/react-native-community/react-native-tab-view"><code>react-native-tab-view</code></a>.</p>
+<p>To use this navigator, ensure that you have <a href="getting-started.html"><code>@react-navigation/native</code> and its dependencies (follow this guide)</a>, then install <a href="https://github.com/react-navigation/react-navigation/tree/master/packages/material-top-tabs"><code>@react-navigation/material-top-tabs</code></a>:</p>
+<pre><code class="hljs css language-sh">npm install @react-navigation/material-top-tabs react-native-tab-view
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="api-定义"></a><a href="#api-定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API 定义</h2>
+<p>To use this tab navigator, import it from <code>@react-navigation/material-top-tabs</code>:</p>
+<p><samp id="material-top-tab-based-navigation-minimal" /></p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createMaterialTopTabNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/material-top-tabs'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Tab <span class="token operator">=</span> <span class="token function">createMaterialTopTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">MyTabs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>HomeScreen<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Settings<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>SettingsScreen<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>For a complete usage guide please visit <a href="https://reactnavigation.org/docs/tab-based-navigation.html">Tab Navigation</a></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="props"></a><a href="#props" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Props</h3>
+<p>The <code>Tab.Navigator</code> component accepts following props:</p>
+<h4><a class="anchor" aria-hidden="true" id="initialroutename"></a><a href="#initialroutename" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>initialRouteName</code></h4>
+<p>The name of the route to render on first load of the navigator.</p>
+<h4><a class="anchor" aria-hidden="true" id="screenoptions"></a><a href="#screenoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>screenOptions</code></h4>
+<p>Default options to use for the screens in the navigator.</p>
+<h4><a class="anchor" aria-hidden="true" id="backbehavior"></a><a href="#backbehavior" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>backBehavior</code></h4>
+<p>Behavior of back button handling.</p>
+<ul>
+<li><code>initialRoute</code> to return to initial tab</li>
+<li><code>order</code> to return to previous tab (in the order they are shown in the tab bar)</li>
+<li><code>history</code> to return to last visited tab</li>
+<li><code>none</code> to not handle back button</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="tabbarposition"></a><a href="#tabbarposition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarPosition</code></h4>
+<p>Position of the tab bar in the tab view. Possible values are <code>'top'</code> and <code>'bottom'</code>. Defaults to <code>'top'</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="lazy"></a><a href="#lazy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>lazy</code></h4>
+<p>Boolean indicating whether to lazily render the scenes. When this is set to <code>true</code>, screens will be rendered as they come into the viewport. By default all scenes are rendered to provide a smoother swipe experience. But you might want to defer the rendering of screens out of the viewport until the user sees them. To enable lazy rendering, set <code>lazy</code> to <code>true</code>.</p>
+<p>When you enable <code>lazy</code>, the lazy loaded screens will usually take some time to render when they come into the viewport. You can use the <code>renderLazyPlaceholder</code> prop to customize what the user sees during this short period.</p>
+<h4><a class="anchor" aria-hidden="true" id="lazypreloaddistance"></a><a href="#lazypreloaddistance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>lazyPreloadDistance</code></h4>
+<p>When <code>lazy</code> is enabled, you can specify how many adjacent routes should be preloaded with this prop. This value defaults to <code>0</code> which means lazy pages are loaded as they come into the viewport.</p>
+<h4><a class="anchor" aria-hidden="true" id="lazyplaceholder"></a><a href="#lazyplaceholder" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>lazyPlaceholder</code></h4>
+<p>Function that returns a React element to render for routes that haven't been rendered yet. Receives an object containing the route as the argument. The <code>lazy</code> prop also needs to be enabled.</p>
+<p>This view is usually only shown for a split second. Keep it lightweight.</p>
+<p>By default, this renders <code>null</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="removeclippedsubviews"></a><a href="#removeclippedsubviews" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>removeClippedSubviews</code></h4>
+<p>Boolean indicating whether to remove invisible views (such as unfocused screens) from the native view hierarchy to improve memory usage. 默认值： <code>false</code>。</p>
+<blockquote>
+<p>Note: Don't enable this on iOS where this is buggy and views don't re-appear.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="keyboarddismissmode"></a><a href="#keyboarddismissmode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyboardDismissMode</code></h4>
+<p>String indicating whether the keyboard gets dismissed in response to a drag gesture. Possible values are:</p>
+<ul>
+<li><code>'auto'</code> (default): the keyboard is dismissed when the index changes.</li>
+<li><code>'on-drag'</code>: the keyboard is dismissed when a drag begins.</li>
+<li><code>'none'</code>: drags do not dismiss the keyboard.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="swipeenabled"></a><a href="#swipeenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>swipeEnabled</code></h4>
+<p>Boolean indicating whether to enable swipe gestures. Swipe gestures are enabled by default. Passing <code>false</code> will disable swipe gestures, but the user can still switch tabs by pressing the tab bar.</p>
+<h4><a class="anchor" aria-hidden="true" id="swipevelocityimpact"></a><a href="#swipevelocityimpact" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>swipeVelocityImpact</code></h4>
+<p>Determines how relevant is a velocity while calculating next position while swiping. Defaults to <code>0.2</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="timingconfig"></a><a href="#timingconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>timingConfig</code></h4>
+<p>Configuration object for the timing animation which occurs when tapping on tabs. Supported properties are:</p>
+<ul>
+<li><code>duration</code> (<code>number</code>)</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="springconfig"></a><a href="#springconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>springConfig</code></h4>
+<p>Configuration object for the spring animation which occurs after swiping. Supported properties are:</p>
+<ul>
+<li><code>damping</code> (<code>number</code>)</li>
+<li><code>mass</code> (<code>number</code>)</li>
+<li><code>stiffness</code> (<code>number</code>)</li>
+<li><code>restSpeedThreshold</code> (<code>number</code>)</li>
+<li><code>restDisplacementThreshold</code> (<code>number</code>)</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="springvelocityscale"></a><a href="#springvelocityscale" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>springVelocityScale</code></h4>
+<p>Number for determining how meaningful is gesture velocity for calculating initial velocity of spring animation. Defaults to <code>0</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="initiallayout"></a><a href="#initiallayout" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>initialLayout</code></h4>
+<p>Object containing the initial height and width of the screens. Passing this will improve the initial rendering performance. For most apps, this is a good default:</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span> width<span class="token operator">:</span> Dimensions<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'window'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>width <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="position"></a><a href="#position" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>position</code></h4>
+<p>Animated (from <code>react-native-reanimated</code>) value to listen to the position updates. The passed position value will be kept in sync with the current position of the tabs. It's useful for accessing the animated value outside the tab view.</p>
+<h4><a class="anchor" aria-hidden="true" id="scenecontainerstyle"></a><a href="#scenecontainerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sceneContainerStyle</code></h4>
+<p>Style to apply to the view wrapping each screen. You can pass this to override some default styles such as overflow clipping:</p>
+<h4><a class="anchor" aria-hidden="true" id="style"></a><a href="#style" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>style</code></h4>
+<p>Style to apply to the tab view container.</p>
+<h4><a class="anchor" aria-hidden="true" id="gesturehandlerprops"></a><a href="#gesturehandlerprops" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureHandlerProps</code></h4>
+<p>An object with props to be passed to underlying <a href="https://kmagiera.github.io/react-native-gesture-handler/docs/handler-pan.html#properties"><code>PanGestureHandler</code></a>. For example:</p>
+<pre><code class="hljs css language-js">gestureHandlerProps<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
+  maxPointers<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  waitFor<span class="token operator">:</span> <span class="token punctuation">[</span>someRef<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="pager"></a><a href="#pager" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>pager</code></h4>
+<p>Function that returns a React element to use as the pager. The pager handles swipe gestures and page switching. By default we use <a href="https://github.com/kmagiera/react-native-gesture-handler"><code>react-native-gesture-handler</code></a> for handling gestures. You can switch out the pager for a different implementation to customize the experience.</p>
+<p>For example, to use pager backed by the native <code>ViewPager</code>, you can use <a href="https://github.com/software-mansion/react-native-tab-view-viewpager-adapter"><code>react-native-tab-view-viewpager-adapter</code></a>:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> ViewPagerAdapter <span class="token keyword">from</span> <span class="token string">'react-native-tab-view-viewpager-adapter'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span> <span class="token attr-name">pager</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">props</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ViewPagerAdapter</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">props</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="tabbar"></a><a href="#tabbar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBar</code></h4>
+<p>Function that returns a React element to display as the tab bar.</p>
+<p>例子:</p>
+<p><samp id="material-top-tab-custom-tab-bar"></p></p>
+<pre><code class="js">import { View, TouchableOpacity } from 'react-native';
+import Animated from 'react-native-reanimated';
+<p>function MyTabBar({ state, descriptors, navigation, position }) {
+return (
+&lt;View style={{ flexDirection: 'row' }}&gt;
+{state.routes.map((route, index) =&gt; {
+const { options } = descriptors[route.key];
+const label =
+options.tabBarLabel !== undefined
+? options.tabBarLabel
+: options.title !== undefined
+? options.title
+: route.name;</p>
+<pre><code class="hljs">    const isFocused = state.index === index;
+
+    const onPress = () =&amp;gt; {
+      const event = navigation.emit({
+        type: 'tabPress',
+        target: route.key,
+      });
+
+      if (!isFocused &amp;&amp; !event.defaultPrevented) {
+        navigation.navigate(route.name);
+      }
+    };
+
+    const onLongPress = () =&amp;gt; {
+      navigation.emit({
+        type: 'tabLongPress',
+        target: route.key,
+      });
+    };
+
+    const inputRange = state.routes.map((_, i) =&amp;gt; i);
+    const opacity = Animated.interpolate(position, {
+      inputRange,
+      outputRange: inputRange.map(i =&amp;gt; (i === index ? 1 : 0)),
+    });
+
+    return (
+      &amp;lt;TouchableOpacity
+        accessibilityRole=&quot;button&quot;
+        accessibilityStates={isFocused ? ['selected'] : []}
+        accessibilityLabel={options.tabBarAccessibilityLabel}
+        testID={options.tabBarTestID}
+        onPress={onPress}
+        onLongPress={onLongPress}
+        style={{ flex: 1 }}
+      &amp;gt;
+        &amp;lt;Animated.Text style={{ opacity }}&amp;gt;
+          {label}
+        &amp;lt;/Animated.Text&amp;gt;
+      &amp;lt;/TouchableOpacity&amp;gt;
+    );
+  })}
+&amp;lt;/View&amp;gt;
+</code></pre>
+<p>);
+}</p>
+<p>// ...</p>
+<p>&lt;Tab.Navigator tabBar={props =&gt; &lt;MyTabBar {...props} /&gt;}&gt;
+{...}
+&lt;/Tab.Navigator&gt;
+</code></pre></p>
+<p spaces-before="0">
+  This example will render a basic tab bar with labels.
+</p>
+<p><h4 spaces-before="0">
+<code>tabBarOptions</code>
+</h4></p>
+<p spaces-before="0">
+  An object containing the props for the tab bar component. It can contain the following properties:
+</p>
+<ul>
+  <li>
+    <code>activeTintColor</code> -活动选项卡的标签和图标颜色。
+  </li>
+  <li>
+    <code>inactiveTintColor</code> -"非活动" 选项卡的标签和图标颜色。
+  </li>
+  <li>
+    <code>showLabel</code> -是否显示选项卡的图标，默认值为 false。
+  </li>
+  <li>
+    <code>showLabel</code> -是否显示选项卡的标签, 默认值为 true。
+  </li>
+  <li>
+    <code>pressColor</code> - Color for material ripple (Android >= 5.0 only).
+  </li>
+  <li>
+    <code>pressOpacity</code> - Opacity for pressed tab (iOS and Android < 5.0 only).
+  </li>
+  <li>
+    <code>scrollEnabled</code> -是否支持 选项卡滚动
+  </li>
+  <li>
+    <code>tabStyle</code> -选项卡的样式对象。
+  </li>
+  <li>
+    <code>indicatorStyle</code> -选项卡指示器的样式对象（选项卡底部的行）。
+  </li>
+  <li>
+    <code>labelStyle</code> -选项卡标签的样式对象。 Specifying a color here will override the color specified in <code>activeTintColor</code> and <code>inactiveTintColor</code> for the label.
+  </li>
+  <li>
+    <code>iconStyle</code> -选项卡图标的样式对象。
+  </li>
+  <li>
+    <code>style</code> -选项卡栏的样式对象。
+  </li>
+  <li>
+    <code>allowFontScaling</code> -无论标签字体是否应缩放以尊重文字大小可访问性设置，默认值都是 true。
+  </li>
+  <li>
+    <code>renderIndicator</code> - Function which takes an object with the current route and returns a custom React Element to be used as a tab indicator.
+  </li>
+</ul>
+<p spaces-before="0">
+  例子:
+</p>
+<p spaces-before="0">
+  <samp id="material-top-tab-options"></p> 
+  <pre><code class="js">&lt;Tab.Navigator
+  tabBarOptions={{
+    labelStyle: { fontSize: 12 },
+    tabStyle: { width: 100 },
+    style: { backgroundColor: 'powderblue' },
+  }}
+&gt;
+  {/* ... */}
+&lt;/Tab.Navigator&gt;
+</code></pre>
+<p><h3 spaces-before="0">
+Options
+</h3></p>
+<p spaces-before="0">
+  The <code>options</code> prop can be used to configure individual screens inside the navigator. Supported options are:
+</p>
+<p><h4 spaces-before="0">
+<code>标题</code>
+</h4></p>
+<p spaces-before="0">
+  可用作<code> headerTitle </code>和<code> tabBarLabel </code>的后备的通用标题。
+</p>
+<p><h4 spaces-before="0">
+<code>tabBarIcon</code>
+</h4></p>
+<p spaces-before="0">
+  Function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in the tab bar.
+</p>
+<p><h4 spaces-before="0">
+<code>tabBarLabel</code>
+</h4></p>
+<p spaces-before="0">
+  Title string of a tab displayed in the tab bar or a function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in tab bar. 未定义时，使用场景<code> title </code>。 要隐藏，请参阅上一节中的<code> tabBarOptions.showLabel </code>。
+</p>
+<p><h4 spaces-before="0">
+<code>tabBarAccessibilityLabel</code>
+</h4></p>
+<p spaces-before="0">
+  选项卡按钮的无障碍标签。 当用户点击该选项卡时，该标签会被屏幕阅读器阅读（用于方便视障人士使用 手机，鼓励有条件的开发者设置该标签）， 如果您的选项卡的没有标签, 强烈建议您设置此选项。
+</p>
+<p><h4 spaces-before="0">
+<code>tabBarTestID</code>
+</h4></p>
+<p spaces-before="0">
+  用于在测试中找到该选项卡按钮的 ID。
+</p>
+<p><h3 spaces-before="0">
+Events
+</h3></p>
+<p spaces-before="0">
+  The navigator can fire events on certain actions. Supported events are:
+</p>
+<p><h4 spaces-before="0">
+<code>tabPress</code>
+</h4></p>
+<p spaces-before="0">
+  This event is fired when the user presses the tab button for the current screen in the tab bar. By default a tab press does several things:
+</p>
+<ul>
+  <li>
+    If the tab is not focused, tab press will focus that tab
+  </li>
+  <li>
+    If the tab is already focused: <ul>
+      <li>
+        If the screen for the tab renders a scroll view, scroll to top is performed by <code>useScrollToTop</code>
+      </li>
+      <li>
+        If the screen for the tab renders a stack navigator, a <code>popToTop</code> action is performed on the stack
+      </li>
+    </ul>
+  </li>
+</ul>
+<p spaces-before="0">
+  To prevent the default behavior, you can call <code>event.preventDefault</code>:
+</p>
+<p spaces-before="0">
+  <samp id="material-top-tab-prevent-default"></p> 
+  <pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('tabPress', e =&gt; {
+    // Prevent default behavior
+    e.preventDefault();
+<pre><code class="hljs">// Do something manually
+// ...
+</code></pre>
+<p>});</p>
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
+<p><h4 spaces-before="0">
+<code>tabLongPress</code>
+</h4></p>
+<p spaces-before="0">
+  This event is fired when the user presses the tab button for the current screen in the tab bar for an extended period.
+</p>
+<p spaces-before="0">
+  例子:
+</p>
+<pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('tabLongPress', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
+<p><h3 spaces-before="0">
+Helpers
+</h3></p>
+<p spaces-before="0">
+  The tab navigator adds the following methods to the navigation prop:
+</p>
+<p><h4 spaces-before="0">
+<code>jumpTo</code>
+</h4></p>
+<p spaces-before="0">
+  Navigates to an existing screen in the tab navigator. The method accepts following arguments:
+</p>
+<ul>
+  <li>
+    <code>name</code> - <em x-id="4">string</em> - Name of the route to jump to.
+  </li>
+  <li>
+    <code>params</code> - <em x-id="4">object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).
+  </li>
+</ul>
+<p spaces-before="0">
+  <samp id="material-top-tab-jump-to"></p> 
+  <pre><code class="js">navigation.jumpTo('Profile', { name: 'Michaś' });
+</code></pre>
+<p><h2 spaces-before="0">
+例子
+</h2></p>
+<p spaces-before="0">
+  <samp id="material-top-tab-example"></p> 
+  <pre><code class="js">import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+<p>const Tab = createMaterialTopTabNavigator();</p>
+<p>function MyTabs() {
+return (
+&lt;Tab.Navigator
+initialRouteName=&quot;Feed&quot;
+tabBarOptions={{
+activeTintColor: '#e91e63',
+labelStyle: { fontSize: 12 },
+style: { backgroundColor: 'powderblue' },
+}}
+&gt;
+&lt;Tab.Screen
+name=&quot;Feed&quot;
+component={Feed}
+options={{ tabBarLabel: 'Home' }}
+/&gt;
+&lt;Tab.Screen
+name=&quot;Notifications&quot;
+component={Notifications}
+options={{ tabBarLabel: 'Updates' }}
+/&gt;
+&lt;Tab.Screen
+name=&quot;Profile&quot;
+component={Profile}
+options={{ tabBarLabel: 'Profile' }}
+/&gt;
+&lt;/Tab.Navigator&gt;
+);
+}
+</code></pre></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/material-bottom-tab-navigator.html"><span class="arrow-prev">← </span><span>上一篇</span></a><a class="docs-next button" href="/docs/zh-Hans/use-navigation.html"><span>下一篇</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-定义">API 定义</a><ul class="toc-headings"><li><a href="#props">Props</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

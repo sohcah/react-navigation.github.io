@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Custom navigators · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="A navigator is any React component that has a [router](https://github.com/react-navigation/react-navigation/blob/2.x/src/routers/StackRouter.js) on it, to define the navigation behavior. Each navigator is given a `navigation` prop, which allows the parent to control the navigation state."/><meta name="docsearch:version" content="2.x"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Custom navigators · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="A navigator is any React component that has a [router](https://github.com/react-navigation/react-navigation/blob/2.x/src/routers/StackRouter.js) on it, to define the navigation behavior. Each navigator is given a `navigation` prop, which allows the parent to control the navigation state."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/en/versions.html"><h3>2.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/2.x/getting-started.html" target="_self">Docs</a></li><li class=""><a href="/en/help.html" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/pt-BR/2.x/custom-navigators.html">Português (Brasil)</a></li><li><a href="/docs/zh-Hans/2.x/custom-navigators.html">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Build your own Navigator</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Fundamentals<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/2.x/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/params.html">Passing parameters to routes</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/glossary-of-terms.html">Glossary of terms</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/common-mistakes.html">Common mistakes</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/react-native-screens.html">Optimize memory usage and performance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/limitations.html">Limitations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Assorted Guides<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/2.x/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/handling-iphonex.html">iPhone X support</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/navigation-options-resolution.html">Navigation options resolution</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/navigation-key.html">Using the navigation key</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/screen-tracking.html">Screen tracking</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/state-persistence.html">State persistence</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/app-containers.html">App containers</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/redux-integration.html">Redux integration</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Build your own Navigator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/2.x/custom-navigator-overview.html">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/routers.html">Routers</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/2.x/custom-navigators.html">Custom navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/navigation-views.html">Navigation views</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/transitioner.html">Transitioner</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Related Resources<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/2.x/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Meta<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/2.x/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/en/2.x/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/custom-navigators.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Custom navigators</h1></header><article><div><span><p>A navigator is any React component that has a <a href="https://github.com/react-navigation/react-navigation/blob/2.x/src/routers/StackRouter.js">router</a> on it, to define the navigation behavior. Each navigator is given a <code>navigation</code> prop, which allows the parent to control the navigation state.</p>
+<h2><a class="anchor" aria-hidden="true" id="extending-navigators"></a><a href="#extending-navigators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Extending Navigators</h2>
+<p>It is possible to take an existing Navigator and extend its behavior, using the following approach:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> MyStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CustomNavigator</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> router <span class="token operator">=</span> MyStack<span class="token punctuation">.</span>router<span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> navigation <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyStack</span></span> <span class="token attr-name">navigation</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>navigation<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Now it is possible to render additional things, observe the navigation prop, and override behavior of the router:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> MyStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CustomNavigator</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> router <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>MyStack<span class="token punctuation">.</span>router<span class="token punctuation">,</span>
+    <span class="token function-variable function">getStateForAction</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">action<span class="token punctuation">,</span> lastState</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// check for custom actions and return a different navigation state.</span>
+      <span class="token keyword">return</span> MyStack<span class="token punctuation">.</span>router<span class="token punctuation">.</span><span class="token function">getStateForAction</span><span class="token punctuation">(</span>action<span class="token punctuation">,</span> lastState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token function">componentDidUpdate</span><span class="token punctuation">(</span><span class="token parameter">lastProps</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Navigation state has changed from lastProps.navigation.state to this.props.navigation.state</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> navigation <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyStack</span></span> <span class="token attr-name">navigation</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>navigation<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="navigator-navigation-prop"></a><a href="#navigator-navigation-prop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigator Navigation Prop</h2>
+<p>The navigation prop passed down to a navigator only includes <code>state</code>, <code>dispatch</code>, and <code>addListener</code>. This is the current state of the navigator, and an event channel to send action requests.</p>
+<p>All navigators are controlled components: they always display what is coming in through <code>props.navigation.state</code>, and their only way to change the state is to send actions into <code>props.navigation.dispatch</code>.</p>
+<p>Navigators can specify custom behavior to parent navigators by <a href="custom-routers.html">customizing their router</a>. For example, a navigator is able to specify when actions should be blocked by returning null from <code>router.getStateForAction</code>. Or a navigator can specify custom URI handling by overriding <code>router.getActionForPathAndParams</code> to output a relevant navigation action, and handling that action in <code>router.getStateForAction</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="navigation-state"></a><a href="#navigation-state" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigation State</h3>
+<p>The navigation state that is passed into a navigator's <code>props.navigation.state</code> has the following structure:</p>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">index</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">// identifies which route in the routes array is active</span>
+  <span class="hljs-attribute">routes</span>: [
+    {
+      <span class="hljs-comment">// Each route needs a name, which routers will use to associate each route</span>
+      <span class="hljs-comment">// with a react component</span>
+      <span class="hljs-attribute">routeName</span>: <span class="hljs-string">'MyRouteName'</span>,
+
+      <span class="hljs-comment">// A unique id for this route, used to keep order in the routes array:</span>
+      <span class="hljs-attribute">key</span>: <span class="hljs-string">'myroute-123'</span>,
+
+      <span class="hljs-comment">// Routes can have any additional data. The included routers have `params`</span>
+      ...customRouteData,
+    },
+    ..<span class="hljs-selector-class">.moreRoutes</span>,
+  ]
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="navigation-dispatchers"></a><a href="#navigation-dispatchers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigation Dispatchers</h3>
+<p>A navigator can dispatch navigation actions, such as 'Go to a URI', 'Go back'.</p>
+<p>The dispatcher will return <code>true</code> if the action was successfully handled, otherwise <code>false</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="api-for-building-custom-navigators"></a><a href="#api-for-building-custom-navigators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API for building custom navigators</h2>
+<p>To help developers implement custom navigators, the following utilities are provided with React Navigation:</p>
+<h3><a class="anchor" aria-hidden="true" id="createnavigator"></a><a href="#createnavigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>createNavigator</code></h3>
+<blockquote>
+<p>Note: The <code>createNavigator</code> API has changed in version 2. The old doc for v1 can be accessed here: <a href="https://v1.reactnavigation.org/docs/custom-navigators.html">https://v1.reactnavigation.org/docs/custom-navigators.html</a></p>
+</blockquote>
+<p>This utility combines a <a href="routers.html">router</a> and a <a href="navigation-views.html">navigation view</a> together in a standard way:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>createNavigator<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createNavigator</span><span class="token punctuation">(</span>NavigationView<span class="token punctuation">,</span> router<span class="token punctuation">,</span> navigationConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The new <code>AppNavigator</code> can be rendered as such:</p>
+<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AppNavigator</span></span>
+  <span class="token attr-name">navigation</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> state<span class="token punctuation">,</span> dispatch<span class="token punctuation">,</span> addListener <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+  <span class="token attr-name">screenProps</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
+</code></pre>
+<p>Then the view will be rendered in the following way:</p>
+<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationView</span></span>
+  <span class="token attr-name">screenProps</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>screenProps<span class="token punctuation">}</span></span>
+  <span class="token attr-name">navigation</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>navigation<span class="token punctuation">}</span></span>
+  <span class="token attr-name">navigationConfig</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>navigationConfig<span class="token punctuation">}</span></span>
+  <span class="token attr-name">descriptors</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>descriptors<span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
+</code></pre>
+<p>The <code>navigation</code> prop is the same navigation prop that was passed into the navigator.</p>
+<p>Both <code>navigationConfig</code> and <code>screenProps</code> are simply passed through, as defined above.</p>
+<p>Most information about child screens comes through the <code>descriptors</code> prop. The descriptors is an object map of route keys to scene descriptors. There is one descriptor for each child route.</p>
+<h3><a class="anchor" aria-hidden="true" id="scene-descriptors"></a><a href="#scene-descriptors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scene Descriptors</h3>
+<p>A scene descriptor has the following properties:</p>
+<ul>
+<li><code>getComponent</code>, a function that returns the component for the screen</li>
+<li><code>options</code>, the flattened navigationOptions for the route</li>
+<li><code>navigation</code>, the child navigation prop, including actions and the route <code>state</code></li>
+<li><code>state</code>, the navigation state for the child screen (a shortcut for <code>navigation.state</code>)</li>
+<li><code>key</code>, the key of the route (a shortcut for <code>navigation.state.key</code>)</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="createnavigationcontainer"></a><a href="#createnavigationcontainer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>createNavigationContainer</code></h3>
+<p>If you want your navigator to be usable as a top-level component, (without a navigation prop being passed in), you can use <code>createNavigationContainer</code>. This utility will make your navigator act like a top-level navigator when the navigation prop is missing. It will manage the app state, and integrate with app-level nav features, like handling incoming and outgoing links, and Android back button behavior.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/2.x/routers.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/en/2.x/custom-routers.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#extending-navigators">Extending Navigators</a></li><li><a href="#navigator-navigation-prop">Navigator Navigation Prop</a><ul class="toc-headings"><li><a href="#navigation-state">Navigation State</a></li><li><a href="#navigation-dispatchers">Navigation Dispatchers</a></li></ul></li><li><a href="#api-for-building-custom-navigators">API for building custom navigators</a><ul class="toc-headings"><li><a href="#createnavigator"><code>createNavigator</code></a></li><li><a href="#scene-descriptors">Scene Descriptors</a></li><li><a href="#createnavigationcontainer"><code>createNavigationContainer</code></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

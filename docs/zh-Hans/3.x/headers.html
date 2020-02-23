@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Configuring the header bar · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="现在，你可能已经厌倦了在屏幕上看到一个空白的灰色条 &amp;mdash; 你已经准备好了一些 [风骚的操作👀](https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg)。 那么让我们来看看配置标题栏吧。"/><meta name="docsearch:version" content="3.x"/><meta name="docsearch:language" content="zh-Hans"/><meta property="og:title" content="Configuring the header bar · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="现在，你可能已经厌倦了在屏幕上看到一个空白的灰色条 &amp;mdash; 你已经准备好了一些 [风骚的操作👀](https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg)。 那么让我们来看看配置标题栏吧。"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-Hans"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/zh-Hans/versions.html"><h3>3.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-Hans/3.x/getting-started.html" target="_self">文档</a></li><li class=""><a href="/zh-Hans/help.html" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/3.x/headers.html">English</a></li><li><a href="/docs/pt-BR/3.x/headers.html">Português (Brasil)</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>基础</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">基础<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/params.html">Passing parameters to routes</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-Hans/3.x/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/app-containers.html">App containers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/glossary-of-terms.html">Glossary of terms</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/common-mistakes.html">Common mistakes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/react-native-screens.html">Optimize memory usage and performance</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/limitations.html">Limitations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">指南<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/handling-iphonex.html">Supporting safe areas</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-options-resolution.html">Navigation options resolution</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-key.html">Using the navigation key</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/screen-tracking.html">Screen tracking for analytics</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/themes.html">Themes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/state-persistence.html">State persistence</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/redux-integration.html">Redux integration</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/MST-integration.html">MobX State Tree integration</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/localization.html">Localization</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/web-support.html">Web support</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/function-after-focusing-screen.html">Call a function when focused screen changes</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">阅读 API 参考<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-prop.html">Navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-context.html">NavigationContext</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-events.html">NavigationEvents</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Navigators</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/stack-navigator.html">createStackNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/switch-navigator.html">createSwitchNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/animated-switch-navigator.html">createAnimatedSwitchNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/drawer-navigator.html">createDrawerNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/bottom-tab-navigator.html">createBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/material-bottom-tab-navigator.html">createMaterialBottomTabNavigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/material-top-tab-navigator.html">createMaterialTopTabNavigator</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Actions</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-actions.html">NavigationActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/stack-actions.html">StackActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/switch-actions.html">SwitchActions</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/drawer-actions.html">DrawerActions</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Helpers</h4><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/with-navigation.html">withNavigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/with-navigation-focus.html">withNavigationFocus</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/scrollables.html">Scrollables</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">构建自己的导航<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-navigator-overview.html">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/routers.html">Routers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-navigators.html">Custom navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/navigation-views.html">Navigation views</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/transitioner.html">Transitioner</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">相关资源<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">其他<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/3.x/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/headers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Configuring the header bar</h1></header><article><div><span><p>现在，你可能已经厌倦了在屏幕上看到一个空白的灰色条 — 你已经准备好了一些 <a href="https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg">风骚的操作👀</a>。 那么让我们来看看配置标题栏吧。</p>
+<h2><a class="anchor" aria-hidden="true" id="设置标题栏显示的标题"></a><a href="#设置标题栏显示的标题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>设置标题栏显示的标题</h2>
+<p>每个页面组件可以有一个名为<code>navigationOptions</code>的静态属性，它是一个对象或一个返回包含各种配置选项的对象的函数。 我们用于设置标题栏的标题的是<code>title</code>这个属性，如以下示例所示。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Details'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/setting-header-title-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<blockquote>
+<p><code>createStackNavigator</code>默认情况下按照平台惯例设置，所以在iOS上标题居中，在Android上左对齐。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="在标题中使用参数"></a><a href="#在标题中使用参数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在标题中使用参数</h2>
+<p>为了在标题中使用参数，我们需要使<code>navigationOptions</code>成为一个返回配置对象的函数。 尝试在<code>navigationOptions</code>中使用<code>this.props</code>可能很诱人，但因为它是组件的静态属性，所以<code>this</code>不会指向一个组件的实例，因此没有 props 可用。 相反，如果我们将<code>navigationOptions</code>作为一个函数，那么React Navigation将会用包含<code>{navigation&gt; navigationOptions，screenProps}</code>的对象调用它 -- 在这种情况下，我们只用关心<code>navigation</code>，它是与传递给页面的<code>this.props.navigation &lt;/ code&gt;相同的对象。 您可能还记得，我们可以通过&lt;code&gt; navigation.state.params</code>从<code>navigation</code>中获取参数，因此我们执行下面的操作以提取 param 并将其用作标题。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> navigation<span class="token punctuation">.</span><span class="token function">getParam</span><span class="token punctuation">(</span><span class="token string">'otherParam'</span><span class="token punctuation">,</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/using-params-in-title-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p>传递给<code>navigationOptions</code>函数的参数是具有以下属性的对象：</p>
+<ul>
+<li><code>navigation</code> - 页面的<a href="navigation-prop.html"> 导航属性 </a>，在页面中的路由为<code>navigation.state</code>。</li>
+<li><code>screenProps</code> - 从导航器组件上层传递的 props</li>
+<li><code>navigationOptions</code> - 如果未提供新值，将使用的默认或上一个选项</li>
+</ul>
+<p>在上面的示例中，我们只需要<code>navigation</code> 属性，但在某些情况下，你可能需要使用<code>screenProps</code>或<code>navigationOptions</code>。</p>
+<h2><a class="anchor" aria-hidden="true" id="使用-setparams-更新-navigationoptions-"></a><a href="#使用-setparams-更新-navigationoptions-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用<code>setParams</code>更新<code>navigationOptions</code></h2>
+<p>通常有必要从已加载的页面组件本身更新当前页面的<code>navigationOptions</code>配置。 我们可以使用<code>this.props.navigation.setParams</code>来做到这一点</p>
+<pre><code class="hljs css language-js">  <span class="token comment">/* Inside of render() */</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
+    <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Update the title<span class="token punctuation">"</span></span>
+    <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">setParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span>otherParam<span class="token operator">:</span> <span class="token string">'Updated!'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+  <span class="token punctuation">/></span></span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/updating-navigationoptions-with-setparams-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<h2><a class="anchor" aria-hidden="true" id="调整标题样式"></a><a href="#调整标题样式" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>调整标题样式</h2>
+<p>定制标题样式时有三个关键属性：<code>headerStyle</code>、<code>headerTintColor</code>和<code>headerTitleStyle</code>。</p>
+<ul>
+<li><code>headerStyle</code>：一个应用于 header 的最外层 View 的 样式对象， 如果你设置 <code>backgroundColor</code> ，他就是header 的颜色。</li>
+<li><code>headerTintColor</code>：返回按钮和标题都使用这个属性作为它们的颜色。 在下面的例子中，我们将 tint color 设置为白色（<code>#fff</code>），所以返回按钮和标题栏标题将变为白色。</li>
+<li><code>headerTitleStyle</code>：如果我们想为标题定制<code>fontFamily</code>，<code>fontWeight</code>和其他<code>Text</code>样式属性，我们可以用它来完成。</li>
+</ul>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+      backgroundColor<span class="token operator">:</span> <span class="token string">'#f4511e'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    headerTintColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
+    headerTitleStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+      fontWeight<span class="token operator">:</span> <span class="token string">'bold'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/setting-header-styles-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p>有几件事情需要注意： 1. 在iOS上，状态栏文本和图标是黑色的，而且在深色背景下看起来不太好。 我们不会在这里详细讨论它，但你应该确保配置的状态栏适合页面的颜色，如<a href="status-bar.html">状态栏指南</a>中所述。 2. 我们设置的配置仅适用于<code>Home</code>页面； 当我们导航到<code>Details</code>页面时，会继续使用默认样式。 我们来看看如何在页面之间共享<code>navigationOptions</code>。</p>
+<h2><a class="anchor" aria-hidden="true" id="跨页面共享通用的-navigationoptions-"></a><a href="#跨页面共享通用的-navigationoptions-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>跨页面共享通用的<code>navigationOptions</code></h2>
+<p>通常我们希望可以在多个页面上以类似的方式配置标题栏。 例如，你公司的品牌颜色可能为红色，因此你希望标题栏背景颜色为红色，色调为白色。 方便的是，这些只是我们正在使用的运行示例的颜色，并且你会注意到，当你导航到<code>DetailsScreen</code>时，颜色会恢复默认值。 如果在我们应用中每个页面上，都必须，像将<code>navigationOptions</code>的标题栏样式属性从<code>HomeScreen</code>复制到<code>DetailsScreen</code>一样，那是不是非常的糟糕？ 谢天谢地，我们并没有这么做。 我们可以将配置移动到` defaultNavigationOptions &lt;/ code&gt;属性下的 stack navigator 中。</p></p>
+<pre><code class="js">class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Home',
+    /* No more header config here! */
+  };
+<p>/* render function, etc */
+}</p>
+<p>/* other code... */</p>
+<p>const RootStack = createStackNavigator(
+{
+Home: HomeScreen,
+Details: DetailsScreen,
+},
+{
+initialRouteName: 'Home',
+/* The header config from HomeScreen is now here */
+defaultNavigationOptions: {
+headerStyle: {
+backgroundColor: '#f4511e',
+},
+headerTintColor: '#fff',
+headerTitleStyle: {
+fontWeight: 'bold',
+},
+},
+}
+);
+`</pre></p>
+<p><a href="https://snack.expo.io/@react-navigation/sharing-header-styles-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p>现在，任何属于` RootStack &lt;/ code&gt;的页面都将拥有我们精彩的品牌风格。 不过, 如果需要, 有可以办法覆写这些设置项吗？</p></p>
+<blockquote>
+  <p>注意: 在 v2 及其以下版本, 您要用于执行此操作的属性是 <code>navigationOptions`。 在 v3 中，我们将其重命名为 `defaultNavigationOptions`.</blockquote> 
+<p><code>navigationOptions</code> 还可用于配置 navigator 自身。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> Home <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    Feed<span class="token operator">:</span> ExampleScreen<span class="token punctuation">,</span>
+    Profile<span class="token operator">:</span> ExampleScreen<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    defaultNavigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      headerTintColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
+      headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        backgroundColor<span class="token operator">:</span> <span class="token string">'#000'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    navigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Tabs <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> Home <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<p><a href="https://snack.expo.io/@notbrent/belligerent-pizza" target="blank" class="run-code-button">→ 运行代码</a></p>
+<h2><a class="anchor" aria-hidden="true" id="覆盖共享的-navigationoptions-"></a><a href="#覆盖共享的-navigationoptions-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>覆盖共享的<code>navigationOptions</code></h2>
+<p>你的页面组件上指定的<code>navigationOptions</code>与其父级 stack navigator 中的<code>navigationOptions</code>一起合并时，页面组件上的选项优先。 让我们使用这些知识点在<code>Details</code>页面上反转背景和色彩。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation<span class="token punctuation">,</span> navigationOptions <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> params <span class="token punctuation">}</span> <span class="token operator">=</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> params <span class="token operator">?</span> params<span class="token punctuation">.</span>otherParam <span class="token operator">:</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">,</span>
+      <span class="token comment">/* These values are used instead of the shared configuration! */</span>
+      headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        backgroundColor<span class="token operator">:</span> navigationOptions<span class="token punctuation">.</span>headerTintColor<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      headerTintColor<span class="token operator">:</span> navigationOptions<span class="token punctuation">.</span>headerStyle<span class="token punctuation">.</span>backgroundColor<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/overriding-shared-header-styles-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<h2><a class="anchor" aria-hidden="true" id="使用自定义组件替换标题"></a><a href="#使用自定义组件替换标题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用自定义组件替换标题</h2>
+<p>有时候，你可能需要更多的控制权，而不仅仅是改变标题的文本和样式 -- 例如，你可能想在标题所在的位置放置一张图片，或者将标题变为按钮。 在这些情况下，你可以完全覆盖用于标题的组件并提供您自己的组件。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">LogoTitle</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Image</span></span>
+        <span class="token attr-name">source</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./spiro.png'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> width<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> height<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">/></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// headerTitle instead of title</span>
+    headerTitle<span class="token operator">:</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">LogoTitle</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/* render function, etc */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/custom-header-title-component-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
+<blockquote>
+<p>您可能想知道，为什么<code>headerTitle</code>能够支持我们设置一个组件，而不是像以前一样设置一个<code>title</code>？ 原因是<code>headerTitle</code>是一个特定于 stack navigator 的属性，<code>headerTitle</code>默认为一个<code>Text</code>组件，它显示<code>title</code>这个字符串。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="其他配置"></a><a href="#其他配置" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>其他配置</h2>
+<p>You can read the full list of available <code>navigationOptions</code> for screens inside of a stack navigator in the <a href="stack-navigator.html#navigationoptions-used-by-stacknavigator"><code>createStackNavigator</code> reference</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="摘要"></a><a href="#摘要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>摘要</h2>
+<ul>
+<li>您可以在页面组件的<code>navigationOptions</code>静态属性内自定义标题。 阅读<a href="stack-navigator.html#navigationoptions-used-by-stacknavigator"> API 参考</a>中的完整选项列表。</li>
+<li><code>navigationOptions</code> 静态属性可以是对象或函数。 当它是一个函数时，会为其提供一个带有<code>navigation</code> prop，<code>screenProps</code>和<code>navigationOptions</code>的对象。</li>
+<li>在初始化时，还可以在 stack navigator 的配置中指定共享的<code>navigationOptions</code> 静态属性优先于该配置。</li>
+<li><a href="https://snack.expo.io/@react-navigation/custom-header-title-component-v3">本文涉及的所有源码（expo，请备好梯子）</a>。</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/3.x/params.html"><span class="arrow-prev">← </span><span>上一篇</span></a><a class="docs-next button" href="/docs/zh-Hans/3.x/header-buttons.html"><span>下一篇</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#设置标题栏显示的标题">设置标题栏显示的标题</a></li><li><a href="#在标题中使用参数">在标题中使用参数</a></li><li><a href="#使用-setparams-更新-navigationoptions-">使用<code>setParams</code>更新<code>navigationOptions</code></a></li><li><a href="#调整标题样式">调整标题样式</a></li><li><a href="#跨页面共享通用的-navigationoptions-">跨页面共享通用的<code>navigationOptions</code></a></li><li><a href="#覆盖共享的-navigationoptions-">覆盖共享的<code>navigationOptions</code></a></li><li><a href="#使用自定义组件替换标题">使用自定义组件替换标题</a></li><li><a href="#其他配置">其他配置</a></li><li><a href="#摘要">摘要</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

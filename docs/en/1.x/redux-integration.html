@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Redux integration · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Some folks like to have their navigation state stored in the same place as the rest of their application state. Using Redux to store your state enables you to write custom actions that manipulate the navigation state directly, to be able to dispatch navigation actions from anywhere (sometimes in a &quot;thunk&quot; or &quot;saga&quot;) and to persist the navigation state in the same way you would other Redux state (your mileage may vary on this). You can read more about other use cases in the replies to [this tweet](https://twitter.com/satya164/status/952291726521024512)."/><meta name="docsearch:version" content="1.x"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Redux integration · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="Some folks like to have their navigation state stored in the same place as the rest of their application state. Using Redux to store your state enables you to write custom actions that manipulate the navigation state directly, to be able to dispatch navigation actions from anywhere (sometimes in a &quot;thunk&quot; or &quot;saga&quot;) and to persist the navigation state in the same way you would other Redux state (your mileage may vary on this). You can read more about other use cases in the replies to [this tweet](https://twitter.com/satya164/status/952291726521024512)."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/en/versions.html"><h3>1.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/1.x/getting-started.html" target="_self">Docs</a></li><li class=""><a href="/en/help.html" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/pt-BR/1.x/redux-integration.html">Português (Brasil)</a></li><li><a href="/docs/zh-Hans/1.x/redux-integration.html">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>How do I do ...?</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Fundamentals<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/1.x/getting-started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/hello-react-navigation.html">Hello React Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/supported-react-native-versions.html">Supported React Native versions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/navigating.html">Moving between screens</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/params.html">Passing parameters to routes</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/headers.html">Configuring the header bar</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/header-buttons.html">Header buttons</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/modal.html">Opening a full-screen modal</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/next-steps.html">Next steps</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/glossary-of-terms.html">Glossary of terms</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">How do I do ...?<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/1.x/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/auth-flow.html">Authentication flows</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/handling-iphonex.html">iPhone X support</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/status-bar.html">Different status bar configuration based on route</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/custom-android-back-button-handling.html">Custom Android back button behavior</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/connecting-navigation-prop.html">Access the navigation prop from any component</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/navigating-without-navigation-prop.html">Navigating without the navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/deep-linking.html">Deep linking</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/screen-tracking.html">Screen tracking</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/1.x/redux-integration.html">Redux integration</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Build your own Navigator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/1.x/custom-navigator-overview.html">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/routers.html">Routers</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/custom-navigators.html">Custom navigators</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/custom-routers.html">Custom routers</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/navigation-views.html">Navigation views</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/transitioner.html">Transitioner</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Meta<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/1.x/pitch.html">Pitch &amp; anti-pitch</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/alternatives.html">Alternative libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/en/1.x/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/redux-integration.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Redux integration</h1></header><article><div><span><p>Some folks like to have their navigation state stored in the same place as the rest of their application state. Using Redux to store your state enables you to write custom actions that manipulate the navigation state directly, to be able to dispatch navigation actions from anywhere (sometimes in a &quot;thunk&quot; or &quot;saga&quot;) and to persist the navigation state in the same way you would other Redux state (your mileage may vary on this). You can read more about other use cases in the replies to <a href="https://twitter.com/satya164/status/952291726521024512">this tweet</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="warning"></a><a href="#warning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Warning!</h2>
+<p><em>You probably do not need to do this!</em> Storing your React Navigation state in your own Redux store is likely to give you a very difficult time if you don't know what you're doing. You lose out on some performance optimizations that React Navigation can do for you, for example. Please do not integrate your state into Redux without first ensuring that you can do what you need to do without it!</p>
+<h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<ol>
+<li><p>To handle your app's navigation state in Redux, you can pass your own <code>navigation</code> prop to a navigator.</p></li>
+<li><p>Once you pass your own navigation prop to the navigator, the default <a href="https://reactnavigation.org/docs/navigation-prop"><code>navigation</code></a> prop gets destroyed. You must construct your own <code>navigation</code> prop with <a href="https://reactnavigation.org/docs/navigation-prop#state-the-screen-s-current-state-route"><code>state</code></a>, <a href="https://reactnavigation.org/docs/navigation-prop#dispatch-send-an-action-to-the-router"><code>dispatch</code></a>, and <code>addListener</code> properties.</p></li>
+<li><p>The <code>state</code> will be fed from the reducer assigned to handle navigation state and the <code>dispatch</code> will be Redux's default <code>dispatch</code>. Thus you will be able to dispatch normal redux actions using <code>this.props.navigation.dispatch(ACTION)</code>, reducer will update the navigation state on the basis of dispatched action, the new navigation state will then be passed to the navigator.</p></li>
+<li><p>A middleware is needed so that any events that mutate the navigation state properly trigger the event listeners.</p></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="step-by-step-guide"></a><a href="#step-by-step-guide" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step-by-step guide</h2>
+<p>First, you need to add the <code>react-navigation-redux-helpers</code> package to your project.</p>
+<pre><code class="hljs css language-bash">yarn add react-navigation-redux-helpers
+</code></pre>
+<p>or</p>
+<pre><code class="hljs css language-bash">npm install --save react-navigation-redux-helpers
+</code></pre>
+<p>With Redux, your app's state is defined by a reducer. Each navigation router effectively has a reducer, called <code>getStateForAction</code>. The following is a minimal example of how you might use navigators within a Redux application:</p>
+<pre><code class="hljs css language-es6"><span class="hljs-keyword">import</span> {
+  StackNavigator,
+  addNavigationHelpers,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-navigation'</span>;
+<span class="hljs-keyword">import</span> {
+  createStore,
+  applyMiddleware,
+  combineReducers,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> {
+  createReduxBoundAddListener,
+  createReactNavigationReduxMiddleware,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-navigation-redux-helpers'</span>;
+<span class="hljs-keyword">import</span> { Provider, connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-keyword">const</span> AppNavigator = StackNavigator(AppRouteConfigs);
+
+<span class="hljs-keyword">const</span> initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams(<span class="hljs-string">'Login'</span>));
+
+<span class="hljs-keyword">const</span> navReducer = <span class="hljs-function">(<span class="hljs-params">state = initialState, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> nextState = AppNavigator.router.getStateForAction(action, state);
+
+  <span class="hljs-comment">// Simply return the original `state` if `nextState` is null or undefined.</span>
+  <span class="hljs-keyword">return</span> nextState || state;
+};
+
+<span class="hljs-keyword">const</span> appReducer = combineReducers({
+  <span class="hljs-attr">nav</span>: navReducer,
+  ...
+});
+
+<span class="hljs-comment">// Note: createReactNavigationReduxMiddleware must be run before createReduxBoundAddListener</span>
+<span class="hljs-keyword">const</span> middleware = createReactNavigationReduxMiddleware(
+  <span class="hljs-string">"root"</span>,
+  state =&gt; state.nav,
+);
+<span class="hljs-keyword">const</span> addListener = createReduxBoundAddListener(<span class="hljs-string">"root"</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AppNavigator</span> <span class="hljs-attr">navigation</span>=<span class="hljs-string">{addNavigationHelpers({</span>
+        <span class="hljs-attr">dispatch:</span> <span class="hljs-attr">this.props.dispatch</span>,
+        <span class="hljs-attr">state:</span> <span class="hljs-attr">this.props.nav</span>,
+        <span class="hljs-attr">addListener</span>,
+      })} /&gt;</span></span>
+    );
+  }
+}
+
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> ({
+  <span class="hljs-attr">nav</span>: state.nav
+});
+
+<span class="hljs-keyword">const</span> AppWithNavigationState = connect(mapStateToProps)(App);
+
+<span class="hljs-keyword">const</span> store = createStore(
+  appReducer,
+  applyMiddleware(middleware),
+);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Root</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">AppWithNavigationState</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+    );
+  }
+}
+</code></pre>
+<p>Once you do this, your navigation state is stored within your Redux store, at which point you can fire navigation actions using your Redux dispatch function.</p>
+<p>Keep in mind that when a navigator is given a <code>navigation</code> prop, it relinquishes control of its internal state. That means you are now responsible for persisting its state, handling any deep linking, <a href="#handling-the-hardware-back-button-in-android">Handling the Hardware Back Button in Android</a>, etc.</p>
+<p>Navigation state is automatically passed down from one navigator to another when you nest them. Note that in order for a child navigator to receive the state from a parent navigator, it should be defined as a <code>screen</code>.</p>
+<p>Applying this to the example above, you could instead define <code>AppNavigator</code> to contain a nested <code>TabNavigator</code> as follows:</p>
+<pre><code class="hljs css language-es6"><span class="hljs-attribute">const AppNavigator</span> = StackNavigator({
+  Home: { screen: MyTabNavigator },
+});
+</code></pre>
+<p>In this case, once you <code>connect</code> <code>AppNavigator</code> to Redux as is done in <code>AppWithNavigationState</code>, <code>MyTabNavigator</code> will automatically have access to navigation state as a <code>navigation</code> prop.</p>
+<h2><a class="anchor" aria-hidden="true" id="full-example"></a><a href="#full-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full example</h2>
+<p>There's a working example app with Redux <a href="https://github.com/react-navigation/react-navigation/tree/1.x/examples/ReduxExample">here</a> if you want to try it out yourself.</p>
+<h2><a class="anchor" aria-hidden="true" id="mocking-tests"></a><a href="#mocking-tests" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mocking tests</h2>
+<p>To make jest tests work with your react-navigation app, you need to change the jest preset in the <code>package.json</code>, see <a href="https://facebook.github.io/jest/docs/tutorial-react-native.html#transformignorepatterns-customization">here</a>:</p>
+<pre><code class="hljs css language-json">"jest": {
+  "preset": "react-native",
+  "transformIgnorePatterns": [
+    "node_modules/(?!(jest-)?react-native|react-navigation)"
+  ]
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="handling-the-hardware-back-button-in-android"></a><a href="#handling-the-hardware-back-button-in-android" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Handling the Hardware Back Button in Android</h2>
+<p>By using the following snippet, your nav component will be aware of the back button press actions and will correctly interact with your stack. This is really useful on Android.</p>
+<pre><code class="hljs css language-es6"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> { BackHandler } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-native"</span>;
+<span class="hljs-keyword">import</span> { addNavigationHelpers, NavigationActions } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-navigation"</span>;
+
+<span class="hljs-keyword">const</span> AppNavigation = TabNavigator(
+  {
+    <span class="hljs-attr">Home</span>: { <span class="hljs-attr">screen</span>: HomeScreen },
+    <span class="hljs-attr">Settings</span>: { <span class="hljs-attr">screen</span>: SettingScreen }
+  }
+);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReduxNavigation</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  componentDidMount() {
+    BackHandler.addEventListener(<span class="hljs-string">"hardwareBackPress"</span>, <span class="hljs-keyword">this</span>.onBackPress);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener(<span class="hljs-string">"hardwareBackPress"</span>, <span class="hljs-keyword">this</span>.onBackPress);
+  }
+  onBackPress = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> { dispatch, nav } = <span class="hljs-keyword">this</span>.props;
+    <span class="hljs-keyword">if</span> (nav.index === <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+    dispatch(NavigationActions.back());
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  };
+
+  render() {
+    <span class="hljs-keyword">const</span> { dispatch, nav } = <span class="hljs-keyword">this</span>.props;
+    <span class="hljs-keyword">const</span> navigation = addNavigationHelpers({
+      dispatch,
+      <span class="hljs-attr">state</span>: nav,
+      addListener,
+    });
+
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AppNavigation</span> <span class="hljs-attr">navigation</span>=<span class="hljs-string">{navigation}</span> /&gt;</span></span>;
+  }
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/1.x/screen-tracking.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/en/1.x/custom-navigator-overview.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#warning">Warning!</a></li><li><a href="#overview">Overview</a></li><li><a href="#step-by-step-guide">Step-by-step guide</a></li><li><a href="#full-example">Full example</a></li><li><a href="#mocking-tests">Mocking tests</a></li><li><a href="#handling-the-hardware-back-button-in-android">Handling the Hardware Back Button in Android</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-navigation/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
