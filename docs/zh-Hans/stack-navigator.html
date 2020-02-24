@@ -197,28 +197,44 @@ title={title}
 leftButton={
 previous ? &lt;MyBackButton onPress={navigation.goBack} /&gt; : undefined
 }
+style={options.headerStyle}
 /&gt;
 );
 };
 </code></pre></p>
 <p spaces-before="0">
-  By default, there is one floating header which renders headers for multiple screens on iOS. These headers include animations to smoothly switch to one another.
+  To set a custom header for all the screens in the navigator, you can specify this option in the <code>screenOptions</code> prop of the navigator.
 </p>
 <p spaces-before="0">
-  When using a custom header, it's recommended set the <code>headerMode</code> prop on the navigator to <code>screen</code> so that you don't have to implement animations.
+  When using a custom header, there are 2 important things to keep in mind:
+</p>
+<p><h5 spaces-before="0">
+Specify a <code>height</code> in <code>headerStyle</code>
+</h5></p>
+<p spaces-before="0">
+  If your header's height differs from the default header height, then you might notice glitches due to measurement being async. Explicitly specifying the height will avoid such glitches.
 </p>
 <p spaces-before="0">
-  You should also specify a height in <code>headerStyle</code> to avoid glitches:
+  例子:
 </p>
 <pre><code class="js">headerStyle: {
   height: 80, // Specify the height of your custom header
 };
 </code></pre>
 <p spaces-before="0">
-  To set a custom header for all the screens in the navigator, you can specify this option in the <code>screenOptions</code> prop of the navigator.
+  Note that this style is not applied to the header by default since you control the styling of your custom header. If you also want to apply this style to your header, use <code>scene.descriptor.options.headerStyle</code> from the props.
+</p>
+<p><h5 spaces-before="0">
+Set <code>headerMode</code> to <code>screen</code>
+</h5></p>
+<p spaces-before="0">
+  By default, there is one floating header which renders headers for multiple screens on iOS. These headers include animations to smoothly switch to one another.
 </p>
 <p spaces-before="0">
-  If you want your custom header to animate with screen transitions and want to keep <code>headerMode</code> as <code>float</code>, you can interpolate on the <code>scene.progress.current</code> and <code>scene.progress.next</code> props. For example, following will cross-fade the header:
+  Setting the <code>headerMode</code> prop to <code>screen</code> makes the header part of the screen, so you don't have to implement animations to animate it separately.
+</p>
+<p spaces-before="0">
+  If you want to customize how the header animates and want to keep <code>headerMode</code> as <code>float</code>, you can interpolate on the <code>scene.progress.current</code> and <code>scene.progress.next</code> props. For example, following will cross-fade the header:
 </p>
 <pre><code class="js">const progress = Animated.add(scene.progress.current, scene.progress.next || 0);
 <p>const opacity = progress.interpolate({
