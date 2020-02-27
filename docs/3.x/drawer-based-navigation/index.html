@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="generator" content="Docusaurus">
+<link rel="preconnect" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-10128745-16","auto"),ga("send","pageview")</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<link rel="preconnect" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-10128745-16","auto"),ga("send","pageview")</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://buttons.github.io/buttons.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 <script src="/js/code-block-buttons.js"></script>
@@ -18,25 +24,25 @@
 <link rel="stylesheet" href="/styles.ed29730d.css">
 
 
-<link rel="preload" href="/styles.dc9aef2d.js" as="script">
+<link rel="preload" href="/styles.27189116.js" as="script">
 
-<link rel="preload" href="/runtime~main.4ddf425d.js" as="script">
+<link rel="preload" href="/runtime~main.3d416da0.js" as="script">
 
-<link rel="preload" href="/main.22bb0a58.js" as="script">
+<link rel="preload" href="/main.e8e60af3.js" as="script">
 
-<link rel="preload" href="/1.1ccc688b.js" as="script">
+<link rel="preload" href="/1.37a721ee.js" as="script">
 
-<link rel="preload" href="/2.721bc480.js" as="script">
+<link rel="preload" href="/2.805f9727.js" as="script">
 
-<link rel="preload" href="/3.aeeac8cf.js" as="script">
+<link rel="preload" href="/3.7983e262.js" as="script">
 
-<link rel="preload" href="/ee9e7730.be0aef5c.js" as="script">
+<link rel="preload" href="/ee9e7730.2841f8ea.js" as="script">
 
-<link rel="preload" href="/202f0ee6.ad437a03.js" as="script">
+<link rel="preload" href="/202f0ee6.f8b853ce.js" as="script">
 
-<link rel="preload" href="/7bdc89f1.ba36fb58.js" as="script">
+<link rel="preload" href="/7bdc89f1.d7185084.js" as="script">
 
-<link rel="preload" href="/7ac60746.b55a3d9f.js" as="script">
+<link rel="preload" href="/7ac60746.216a9687.js" as="script">
 
 </head>
 <body>
@@ -48,25 +54,25 @@
 </span></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword module" style="color:#00009f">export</span><span class="token plain"> </span><span class="token keyword module" style="color:#00009f">default</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">createAppContainer</span><span class="token punctuation" style="color:#393A34">(</span><span class="token maybe-class-name">DrawerNavigator</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span></div></code></pre></div><a href="https://snack.expo.io/@react-navigation/basic-drawer-v3" target="blank" class="run-code-button">→ Run this code</a><p>To open and close drawer, use the following helpers to open and close the drawer:</p><div class="mdxCodeBlock_iHAB"><pre class="prism-code language-js codeBlock_19pQ"><button type="button" aria-label="Copy code to clipboard" class="copyButton_1BYj">Copy</button><code class="codeBlockLines_2n9r" style="color:#393A34;background-color:#f6f8fa"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">this</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">props</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">navigation</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">openDrawer</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">this</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">props</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">navigation</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">closeDrawer</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span></div></code></pre></div><p>If you would like to toggle the drawer you call the following:</p><div class="mdxCodeBlock_iHAB"><pre class="prism-code language-js codeBlock_19pQ"><button type="button" aria-label="Copy code to clipboard" class="copyButton_1BYj">Copy</button><code class="codeBlockLines_2n9r" style="color:#393A34;background-color:#f6f8fa"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">this</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">props</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">navigation</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">toggleDrawer</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span></div></code></pre></div><p>Each of these functions, behind the scenes, are simply dispatching actions:</p><div class="mdxCodeBlock_iHAB"><pre class="prism-code language-js codeBlock_19pQ"><button type="button" aria-label="Copy code to clipboard" class="copyButton_1BYj">Copy</button><code class="codeBlockLines_2n9r" style="color:#393A34;background-color:#f6f8fa"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">this</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">props</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">navigation</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">dispatch</span><span class="token punctuation" style="color:#393A34">(</span><span class="token maybe-class-name">DrawerActions</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">openDrawer</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">this</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">props</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">navigation</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">dispatch</span><span class="token punctuation" style="color:#393A34">(</span><span class="token maybe-class-name">DrawerActions</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">closeDrawer</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">this</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">props</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">navigation</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">dispatch</span><span class="token punctuation" style="color:#393A34">(</span><span class="token maybe-class-name">DrawerActions</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">toggleDrawer</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span></div></code></pre></div><p>If you would like to determine if drawer is open or closed, you can do the following:</p><div class="mdxCodeBlock_iHAB"><pre class="prism-code language-js codeBlock_19pQ"><button type="button" aria-label="Copy code to clipboard" class="copyButton_1BYj">Copy</button><code class="codeBlockLines_2n9r" style="color:#393A34;background-color:#f6f8fa"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> parent </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">this</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">props</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">navigation</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">dangerouslyGetParent</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> isDrawerOpen </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> parent </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> parent</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">state</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> parent</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">state</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">isDrawerOpen</span><span class="token punctuation" style="color:#393A34">;</span></div></code></pre></div><p>Additionally, you can automatically hide the status bar by passing the DrawerLayout prop of <code>hideStatusBar: true</code>.</p></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/react-navigation/react-navigation.github.io/edit/source/versioned_docs/version-3.x/drawer-based-navigation.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 40 40" style="margin-right:0.3em;vertical-align:sub"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/docs/3.x/tab-based-navigation"><h5 class="pagination-nav__link--sublabel">Previous</h5><h4 class="pagination-nav__link--label">« Tab navigation</h4></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/docs/3.x/auth-flow"><h5 class="pagination-nav__link--sublabel">Next</h5><h4 class="pagination-nav__link--label">Authentication flows »</h4></a></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_TbNY"></div></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="row footer__links"><div class="col footer__col"><h4 class="footer__title">Docs</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/getting-started">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/custom-navigator-overview">Building your own Navigator</a></li><li class="footer__item"><a class="footer__link-item" href="/contributing">Contributing</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Support</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/questions/tagged/react-navigation">Get help on Stack Overflow</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://github.com/react-navigation/react-navigation/issues/new/choose">Report a bug on Github</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Social</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://github.com/react-navigation/react-navigation">GitHub</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://twitter.com/reactnavigation">Twitter</a></li></ul></div></div><div class="text--center"></div></div></footer>
 </div>
 
-<script src="/styles.dc9aef2d.js"></script>
+<script src="/styles.27189116.js"></script>
 
-<script src="/runtime~main.4ddf425d.js"></script>
+<script src="/runtime~main.3d416da0.js"></script>
 
-<script src="/main.22bb0a58.js"></script>
+<script src="/main.e8e60af3.js"></script>
 
-<script src="/1.1ccc688b.js"></script>
+<script src="/1.37a721ee.js"></script>
 
-<script src="/2.721bc480.js"></script>
+<script src="/2.805f9727.js"></script>
 
-<script src="/3.aeeac8cf.js"></script>
+<script src="/3.7983e262.js"></script>
 
-<script src="/ee9e7730.be0aef5c.js"></script>
+<script src="/ee9e7730.2841f8ea.js"></script>
 
-<script src="/202f0ee6.ad437a03.js"></script>
+<script src="/202f0ee6.f8b853ce.js"></script>
 
-<script src="/7bdc89f1.ba36fb58.js"></script>
+<script src="/7bdc89f1.d7185084.js"></script>
 
-<script src="/7ac60746.b55a3d9f.js"></script>
+<script src="/7ac60746.216a9687.js"></script>
 
 
 </body>
