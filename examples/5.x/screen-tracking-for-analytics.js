@@ -42,7 +42,7 @@ export default function App() {
   const navigationRef = React.useRef();
 
   React.useEffect(() => {
-    const state = navigationRef.getRootState();
+    const state = navigationRef.current.getRootState();
 
     // Save the initial route name
     routeNameRef.current = getActiveRouteName(state);
